@@ -8,8 +8,9 @@ endif
 
 call plug#begin('~/.config/nvim/autoload/plugged')
 
+
+
 	" Load plugins
-	" VIM enhancements
 	Plug 'ciaranm/securemodelines'
 	Plug 'editorconfig/editorconfig-vim'
 	Plug 'justinmk/vim-sneak'
@@ -26,7 +27,17 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 	Plug 'junegunn/fzf.vim'
 
 	" Semantic language support
-	Plug 'neoclide/coc.nvim', {'branch': 'release'}
+	"Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+
+	" Collection of common configurations for the Nvim LSP client
+	Plug 'neovim/nvim-lspconfig'
+
+	" Extensions to built-in LSP, for example, providing type inlay hints
+	Plug 'nvim-lua/lsp_extensions.nvim'
+
+	" Autocompletion framework for built-in LSP
+	Plug 'nvim-lua/completion-nvim'	" VIM enhancements
 
 
 	" Syntactic language support
@@ -39,6 +50,8 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 	Plug 'prabirshrestha/vim-lsp'
 	Plug 'prabirshrestha/asyncomplete.vim'
 	Plug 'prabirshrestha/asyncomplete-lsp.vim'
+"	Plug 'OmniSharp/omnisharp-vim'
+"	Plug 'dense-analysis/ale'
 
 
 	"Plug 'autozimu/LanguageClient-neovim', {

@@ -8,5 +8,9 @@
   "signature.enable": false,
   "coc.preferences.snippets.enable": false,
   "rust-analyzer.diagnostics.enable": false,
-  "rust-analyzer.serverPath": "/usr/bin/rust-analyzer"
+  "rust-analyzer.serverPath": "/usr/bin/rust-analyzer",
+
+  "omnisharp.version": "v1.37.3",
+  "omnisharp.trace.server": "information",
+  "omnisharp.debug.server": false
 }
