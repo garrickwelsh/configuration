@@ -75,3 +75,5 @@ noremap <leader>l :Files<Cr>
 " Open new file adjacent to current file
 nnoremap <leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 
+source $HOME/.config/nvim/coc-settings.vim
+source $HOME/.config/nvim/coc-explorer.vim

@@ -1,9 +1,24 @@
-local configs = require 'lspconfig/configs'
-local lspinfo = require 'lspconfig/lspinfo'
+--local configs = require 'lspconfig/configs'
+--local lspinfo = require 'lspconfig/lspinfo'
 
-local M = {
-  util = require 'lspconfig/util';
-}
+--local M = {
+--  util = require 'lspconfig/util';
+--}
+
+local lsp = require('lspconfig')
+local completion = require('completion')
+
+local mapper = function(mode, key, result)
+  vim.api.nvim_buf_set_keymap(0, mode, key, "<cmd>lua "..result.."<cr>", {noremap = true, silent = true})
+end
+
+-- Set completion on launch
+local custom_attach = function()
+  completion.on_attach()
+  -- Move cursor to the next and previous diagnostic
+  mapper('n', '<leader>dn', 'vim.lsp.diagnostic.goto_next()')
+  mapper('n', '<leader>dp', 'vim.lsp.diagnostic.goto_prev()')
+end
 
 M._root = {}
 

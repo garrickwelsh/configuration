@@ -12,5 +12,14 @@
 
   "omnisharp.version": "v1.37.3",
   "omnisharp.trace.server": "information",
-  "omnisharp.debug.server": false
+  "omnisharp.debug.server": false,
+  "omnisharp.path": "/home/manjaro/software/omnisharp/run",
+
+  "explorer.width": 30,
+  "explorer.icon.enableNerdfont": true,
+  "explorer.previewAction.onHover": false,
+  "explorer.keyMappings.global": {
+	"<cr>": ["expandable?", "expand", "open"],
+	"v": "open:split"
+  }
 }

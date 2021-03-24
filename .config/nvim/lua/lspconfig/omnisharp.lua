@@ -1,6 +1,6 @@
 local configs = require 'lspconfig/configs'
 local util = require 'lspconfig/util'
-local server_name = 'omnisharp'
+--local server_name = 'omnisharp'
 local omnisharp_bin = "/home/manjaro/software/omnisharp/run"
 
 configs[server_name] = {
