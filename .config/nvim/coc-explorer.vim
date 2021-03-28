@@ -34,5 +34,5 @@ let g:coc_explorer_global_presets = {
 \ }
 
 nmap <leader>a :CocCommand explorer<CR>
-nmap <leader>s :CocCommand explorer --preset floating<CR>
+nmap <leader>q :CocCommand explorer --preset floating<CR>
 autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'coc-explorer') | q | endif
