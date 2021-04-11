@@ -4,6 +4,7 @@ let mapleader = "\<Space>"
 
 " Let's not be backwards compatible with vi
 set nocompatible
+set number
 filetype off
 
 source $HOME/.config/nvim/vim-plug/plugins.vim
