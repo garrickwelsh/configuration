@@ -13,7 +13,7 @@ fi
 alias ls='ls --color=auto'
 
 
-eval "$($HOME/softwaresource/starship/target/release/starship init zsh)"
+eval "$(starship init zsh)"
 
 export HOMEPATH="$HOME/bin" 
 if [ -d "$HOMEPATH" ] && [[ ":$PATH:" != ":$HOMEPATH:"* ]]; then
