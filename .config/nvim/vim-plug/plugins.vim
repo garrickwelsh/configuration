@@ -30,17 +30,6 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 	Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 
-	" Collection of common configurations for the Nvim LSP client
-	"Plug 'neovim/nvim-lspconfig'
-
-	" Extensions to built-in LSP, for example, providing type inlay hints
-	"Plug 'nvim-lua/lsp_extensions.nvim'
-
-	" Autocompletion framework for built-in LSP
-	"Plug 'nvim-lua/completion-nvim'	" VIM enhancements
-
-	"Plug 'kabouzeid/nvim-lspinstall'
-	"Plug 'anott03/nvim-lspinstall'
 
 	" Syntactic language support
 	Plug 'rust-lang/rust.vim'
@@ -48,27 +37,31 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 	Plug 'stephpy/vim-yaml'
 	Plug 'rhysd/vim-clang-format'
 	Plug 'plasticboy/vim-markdown'
-	Plug 'prabirshrestha/async.vim'
-	Plug 'prabirshrestha/vim-lsp'
-	Plug 'prabirshrestha/asyncomplete.vim'
-	Plug 'prabirshrestha/asyncomplete-lsp.vim'
-	"Plug 'OmniSharp/omnisharp-vim'
-	"Plug 'dense-analysis/ale'
+
+	" Git Plugins
+	if has('nvim') || has('patch-8.0.902')
+		Plug 'mhinz/vim-signify'
+	else
+		Plug 'mhinz/vim-signify', { 'branch' : 'legacy' }
+	endif
+	Plug 'tpope/vim-fugitive'
+	Plug 'tpope/vim-rhubarb'
+	Plug 'junegunn/gv.vim'
 
 
-	"Plug 'autozimu/LanguageClient-neovim', {
-	"    \ 'branch': 'next',
-	"    \ 'do': 'bash install.sh',
-	"    \ }
+	" The plugins below do not appear useful and have been removed.
+	" Plug 'prabirshrestha/async.vim'
+	" Plug 'prabirshrestha/vim-lsp'
+	" Plug 'prabirshrestha/asyncomplete.vim'
+	" Plug 'prabirshrestha/asyncomplete-lsp.vim'
 
+	" Collection of common configurations for the Nvim LSP client
+	" Plug 'neovim/nvim-lspconfig'
 
-    " Better Syntax Support
-    "Plug 'sheerun/vim-polyglot'
-    " File Explorer
-    "Plug 'scrooloose/NERDTree'
-    " Auto pairs for '(' '[' '{'
-    "Plug 'jiangmiao/auto-pairs'
+	" Extensions to built-in LSP, for example, providing type inlay hints
+	" Plug 'nvim-lua/lsp_extensions.nvim'
 
-
+	" Autocompletion framework for built-in LSP
+	" Plug 'nvim-lua/completion-nvim'	" VIM enhancements
 call plug#end()
 
