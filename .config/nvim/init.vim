@@ -1,4 +1,3 @@
-
 " Map leader character
 let mapleader = "\<Space>"
 
@@ -6,6 +5,8 @@ let mapleader = "\<Space>"
 set nocompatible
 set number
 filetype off
+" Set if we wish to start using folds more often. :smile:
+"set foldcolumn=2
 
 source $HOME/.config/nvim/vim-plug/plugins.vim
 
@@ -80,3 +81,5 @@ source $HOME/.config/nvim/signify.vim
 source $HOME/.config/nvim/coc-settings.vim
 source $HOME/.config/nvim/coc-explorer.vim
 source $HOME/.config/nvim/lightline.vim
+source $HOME/.config/nvim/emoji.vim
+

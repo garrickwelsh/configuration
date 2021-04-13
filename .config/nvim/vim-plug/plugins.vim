@@ -14,7 +14,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 	Plug 'ciaranm/securemodelines'
 	Plug 'editorconfig/editorconfig-vim'
 	Plug 'justinmk/vim-sneak'
-
+	
 	" GUI enhancements
 	Plug 'itchyny/lightline.vim'
 	Plug 'machakann/vim-highlightedyank'
@@ -48,6 +48,8 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 	Plug 'tpope/vim-rhubarb'
 	Plug 'junegunn/gv.vim'
 
+	" Use Emojis in neovim
+	Plug 'junegunn/vim-emoji'
 
 	" The plugins below do not appear useful and have been removed.
 	" Plug 'prabirshrestha/async.vim'
