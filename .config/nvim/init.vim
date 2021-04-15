@@ -11,12 +11,14 @@ filetype off
 " Disable lsp for ale before it's setup otherwise issues may occur
 let g:ale_disable_lsp = 1
 
+" Plugins Load Plug
 source $HOME/.config/nvim/vim-plug/plugins.vim
 
-" Plugins Load Plug
+" The vim colour scheme
+autocmd vimenter * ++nested colorscheme gruvbox
 
-"set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣
-"set list
+set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣
+set list
 
 if has('nvim')
     set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor
@@ -85,3 +87,4 @@ source $HOME/.config/nvim/coc-explorer.vim
 source $HOME/.config/nvim/lightline.vim
 source $HOME/.config/nvim/emoji.vim
 source $HOME/.config/nvim/ale.vim
+source $HOME/.config/nvim/gruvbox.vim
