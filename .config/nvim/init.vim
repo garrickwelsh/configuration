@@ -8,6 +8,9 @@ filetype off
 " Set if we wish to start using folds more often. :smile:
 "set foldcolumn=2
 
+" Disable lsp for ale before it's setup otherwise issues may occur
+let g:ale_disable_lsp = 1
+
 source $HOME/.config/nvim/vim-plug/plugins.vim
 
 " Plugins Load Plug
@@ -39,8 +42,11 @@ autocmd BufReadPost *.rs setlocal filetype=rust
 set hidden
 
 " Open hotkeys
-map <C-p> :GFiles<CR>
-nmap <leader>; :Buffers<CR>
+
+" Open new file adjacent to current file
+nnoremap <leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
+noremap <leader>bf :GFiles<Cr>
+noremap <leader>bb :Buffers<CR>
 
 " Quick-save
 nmap <leader>w :w<CR>
@@ -50,19 +56,12 @@ nmap <leader>w :w<CR>
 " <leader><leader> toggles between buffers
 nnoremap <leader><leader> <c-^>
 
-" <leader>, shows/hides hidden characters
-nnoremap <leader>, :set invlist<cr>
-
-" <leader>q shows stats
-nnoremap <leader>q g<c-g>
-
-
 " <leader>s for Rg search
-noremap <leader>s :Rg
+noremap <leader>bs :Rg
 let g:fzf_layout = { 'down': '~20%' }
 command! -bang -nargs=* Rg
   \ call fzf#vim#grep(
-  \   'rg --column --line-number --no-heading --color=always --exclude .git'.shellescape(<q-args>), 1,
+  \   'rg --column --line-number --no-heading --color=always --exclude .git '.shellescape(<q-args>), 1,
   \   <bang>0 ? fzf#vim#with_preview('up:60%')
   \           : fzf#vim#with_preview('right:50%:hidden', '?'),
   \   <bang>0)
@@ -72,14 +71,17 @@ function! s:list_cmd()
   return base == '.' ? 'fd --type file --follow' : printf('fd --type file --follow | proximity-sort %s', shellescape(expand('%')))
 endfunction
 
-noremap <leader>l :GFiles<Cr>
+" <leader>, shows/hides hidden characters
+nnoremap <leader>, :set invlist<cr>
 
-" Open new file adjacent to current file
-nnoremap <leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
+" <leader>q shows stats
+nnoremap <leader>q g<c-g>
+
+
 
 source $HOME/.config/nvim/signify.vim
 source $HOME/.config/nvim/coc-settings.vim
 source $HOME/.config/nvim/coc-explorer.vim
 source $HOME/.config/nvim/lightline.vim
 source $HOME/.config/nvim/emoji.vim
-
+source $HOME/.config/nvim/ale.vim

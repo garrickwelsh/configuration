@@ -50,7 +50,9 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 
 	" Use Emojis in neovim
 	Plug 'junegunn/vim-emoji'
-
+ 
+	" Plug 'dense-analysis/ale'
+	
 	" The plugins below do not appear useful and have been removed.
 	" Plug 'prabirshrestha/async.vim'
 	" Plug 'prabirshrestha/vim-lsp'

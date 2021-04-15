@@ -10,7 +10,7 @@ if [[ -e /usr/share/zsh/manjaro-zsh-prompt ]]; then
   source /usr/share/zsh/manjaro-zsh-prompt
 fi
 
-alias ls='ls --color=auto'
+alias ls='exa --color=auto'
 
 
 eval "$(starship init zsh)"
