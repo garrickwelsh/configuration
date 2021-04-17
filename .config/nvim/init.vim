@@ -5,6 +5,7 @@ let mapleader = "\<Space>"
 set nocompatible
 set number
 filetype off
+set tabstop=4
 " Set if we wish to start using folds more often. :smile:
 "set foldcolumn=2
 
@@ -82,7 +83,9 @@ nnoremap <leader>q g<c-g>
 
 
 source $HOME/.config/nvim/signify.vim
-source $HOME/.config/nvim/coc-settings.vim
+if !has('nvim-0.5')
+	source $HOME/.config/nvim/coc-settings.vim
+endif
 source $HOME/.config/nvim/coc-explorer.vim
 source $HOME/.config/nvim/lightline.vim
 source $HOME/.config/nvim/emoji.vim
