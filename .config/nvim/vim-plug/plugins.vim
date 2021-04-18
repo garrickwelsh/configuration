@@ -61,12 +61,19 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 	if has('nvim-0.5')
 		" Collection of common configurations for the Nvim LSP client
 		Plug 'neovim/nvim-lspconfig'
+		Plug 'hrsh7th/nvim-compe'
 
 		" Extensions to built-in LSP, for example, providing type inlay hints
 		Plug 'nvim-lua/lsp_extensions.nvim'
 
 		" Autocompletion framework for built-in LSP
 		Plug 'nvim-lua/completion-nvim'	" VIM enhancements
+
+		Plug 'simrat39/rust-tools.nvim'
+
+		Plug 'nvim-lua/popup.nvim'
+		Plug 'nvim-lua/plenary.nvim'
+		Plug 'nvim-telescope/telescope.nvim'
 	endif
 call plug#end()
 

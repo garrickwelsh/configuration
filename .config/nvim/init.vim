@@ -6,6 +6,7 @@ set nocompatible
 set number
 filetype off
 set tabstop=4
+set softtabstop=4
 " Set if we wish to start using folds more often. :smile:
 "set foldcolumn=2
 
@@ -91,3 +92,7 @@ source $HOME/.config/nvim/lightline.vim
 source $HOME/.config/nvim/emoji.vim
 source $HOME/.config/nvim/ale.vim
 source $HOME/.config/nvim/gruvbox.vim
+if has('nvim-0.5')
+	lua require('lsp_config')
+	source $HOME/.config/nvim/lsp_config.vim
+endif
