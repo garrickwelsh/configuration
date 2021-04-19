@@ -8,8 +8,6 @@ endif
 
 call plug#begin('~/.config/nvim/autoload/plugged')
 
-
-
 	" Load plugins
 	Plug 'ciaranm/securemodelines'
 	Plug 'editorconfig/editorconfig-vim'
@@ -26,9 +24,11 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 	Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 	Plug 'junegunn/fzf.vim'
 
+	Plug 'scrooloose/nerdtree'
+	Plug 'xuyuanp/nerdtree-git-plugin'
+
 	" Semantic language support
 	Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
 
 
 	" Syntactic language support
@@ -37,6 +37,8 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 	Plug 'stephpy/vim-yaml'
 	Plug 'rhysd/vim-clang-format'
 	Plug 'plasticboy/vim-markdown'
+	" Syntax mark indent alignment
+	Plug 'nathanaelkane/vim-indent-guides'
 
 	" Git Plugins
 	if has('nvim') || has('patch-8.0.902')
@@ -44,6 +46,8 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 	else
 		Plug 'mhinz/vim-signify', { 'branch' : 'legacy' }
 	endif
+
+	" Git Plugins for vim
 	Plug 'tpope/vim-fugitive'
 	Plug 'tpope/vim-rhubarb'
 	Plug 'junegunn/gv.vim'
@@ -53,22 +57,30 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 
 	" gruvbox colour schemes
 	Plug 'morhetz/gruvbox'
+	" Plugin 'joshdick/onedark.vim'
 	
 	" Plug 'dense-analysis/ale'
 	
-	" The plugins below do not appear useful and have been removed.
-	" Plug 'prabirshrestha/async.vim'
-	" Plug 'prabirshrestha/vim-lsp'
-	" Plug 'prabirshrestha/asyncomplete.vim'
-	" Plug 'prabirshrestha/asyncomplete-lsp.vim'
+	if has('nvim-0.5')
+		" Collection of common configurations for the Nvim LSP client
+		Plug 'neovim/nvim-lspconfig'
+		Plug 'hrsh7th/nvim-compe' "Autocompletion plugin for lsp
 
-	" Collection of common configurations for the Nvim LSP client
-	" Plug 'neovim/nvim-lspconfig'
+		" Extensions to built-in LSP, for example, providing type inlay hints
+		Plug 'nvim-lua/lsp_extensions.nvim'
 
-	" Extensions to built-in LSP, for example, providing type inlay hints
-	" Plug 'nvim-lua/lsp_extensions.nvim'
+		" Autocompletion framework for built-in LSP
+		Plug 'nvim-lua/completion-nvim'	" VIM enhancements
 
-	" Autocompletion framework for built-in LSP
-	" Plug 'nvim-lua/completion-nvim'	" VIM enhancements
+		" Awesome rust tools for nvim lsp
+		Plug 'simrat39/rust-tools.nvim'
+
+		" Popup library
+		Plug 'nvim-lua/popup.nvim'
+		" Module to interact with system processes
+		Plug 'nvim-lua/plenary.nvim'
+		" Fast finder fzf
+		Plug 'nvim-telescope/telescope.nvim'
+	endif
 call plug#end()
 
