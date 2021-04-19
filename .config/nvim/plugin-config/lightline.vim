@@ -1,16 +1,22 @@
+let g:lightline_lsp_signs_ok = 1
 
-function! CocCurrentFunction()
-	return get(b:, 'coc_current_function', '')
-endfunction
 
 let g:lightline = {
-	\ 'colorscheme' : 'wombat',
 	\ 'active': {
 	\   'left': [ [ 'mode', 'paste' ],
-	\ 	     [ 'cocstatus', 'currentfunction', 'readonly', 'filename', 'modified', 'relativepath' ] ]
+	\ 	     [ 'cocstatus', 'currentfunction', 'readonly', 'filename', 'modified', 'relativepath' ] ],
+	\   'right': [ [ 'lsp_errors', 'lsp_warnings', 'lsp_ok', 'lineinfo' ],
+	\              [ 'percent' ],
+	\              [ 'fileformat', 'fileencoding', 'filetype' ] ]
 	\ },
-	\ 'component_function' : {
-	\   'cocstatus': 'coc#status',
-	\   'currentfunction': 'CocCurrentFunction'
-	\ }
-	\ }
+	\ 'component_expand': {
+	\   'lsp_warnings': 'lightline_lsp#warnings',
+	\   'lsp_errors':   'lightline_lsp#errors',
+	\   'lsp_ok':       'lightline_lsp#ok',
+	\ },
+	\ 'component_type': {
+	\   'lsp_warnings': 'warning',
+	\   'lsp_errors':   'error',
+	\   'lsp_ok':       'middle',
+	\ },
+\ }

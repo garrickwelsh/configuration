@@ -28,7 +28,9 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 	Plug 'xuyuanp/nerdtree-git-plugin'
 
 	" Semantic language support
-	Plug 'neoclide/coc.nvim', {'branch': 'release'}
+	if !has('nvim-0.5')
+		Plug 'neoclide/coc.nvim', {'branch': 'release'}
+	endif
 
 
 	" Syntactic language support
@@ -41,13 +43,8 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 	Plug 'nathanaelkane/vim-indent-guides'
 
 	" Git Plugins
-	if has('nvim') || has('patch-8.0.902')
-		Plug 'mhinz/vim-signify'
-	else
-		Plug 'mhinz/vim-signify', { 'branch' : 'legacy' }
-	endif
-
-	" Git Plugins for vim
+	Plug 'mhinz/vim-signify'
+	" More Git Plugins
 	Plug 'tpope/vim-fugitive'
 	Plug 'tpope/vim-rhubarb'
 	Plug 'junegunn/gv.vim'
@@ -59,8 +56,6 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 	Plug 'morhetz/gruvbox'
 	" Plugin 'joshdick/onedark.vim'
 	
-	" Plug 'dense-analysis/ale'
-	
 	if has('nvim-0.5')
 		" Collection of common configurations for the Nvim LSP client
 		Plug 'neovim/nvim-lspconfig'
@@ -71,6 +66,10 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 
 		" Autocompletion framework for built-in LSP
 		Plug 'nvim-lua/completion-nvim'	" VIM enhancements
+
+		" Display lsp lightline in neovim
+		Plug 'halkn/lightline-lsp'
+		Plug 'nvim-lua/lsp-status.nvim' " lsp Status functions to use in lightline
 
 		" Awesome rust tools for nvim lsp
 		Plug 'simrat39/rust-tools.nvim'
