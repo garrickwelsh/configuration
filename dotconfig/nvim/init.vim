@@ -1,9 +1,9 @@
 
 " Load nvim with sane settings to start with
-source $HOME/.config/nvim/settings/setup.vim
-source $HOME/.config/nvim/settings/keybindings.vim
-source $HOME/.config/nvim/settings/gui.vim
-source $HOME/.config/nvim/settings/nvim.vim
+source $HOME/.config/nvim/config/setup.vim
+source $HOME/.config/nvim/config/keybindings.vim
+source $HOME/.config/nvim/config/gui.vim
+source $HOME/.config/nvim/config/nvim.vim
 
 " Plugins Load Plug
 source $HOME/.config/nvim/vim-plug/plugins.vim
