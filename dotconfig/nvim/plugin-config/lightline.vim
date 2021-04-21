@@ -23,10 +23,11 @@ lspconfig.pyls_ms.setup({
   capabilities = lsp_status.capabilities
 })
 
-lspconfig.ghcide.setup({
+lspconfig.omnisharp.setup({
   on_attach = lsp_status.on_attach,
   capabilities = lsp_status.capabilities
 })
+
 lspconfig.rust_analyzer.setup({
   on_attach = lsp_status.on_attach,
   capabilities = lsp_status.capabilities
