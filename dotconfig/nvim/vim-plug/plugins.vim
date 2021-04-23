@@ -27,12 +27,6 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 	Plug 'scrooloose/nerdtree'
 	Plug 'xuyuanp/nerdtree-git-plugin'
 
-	" Semantic language support
-	if !has('nvim-0.5')
-		Plug 'neoclide/coc.nvim', {'branch': 'release'}
-	endif
-
-
 	" Syntactic language support
 	Plug 'rust-lang/rust.vim'
 	Plug 'cespare/vim-toml'
