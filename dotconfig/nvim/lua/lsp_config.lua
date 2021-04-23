@@ -11,4 +11,8 @@ require'lspconfig'.omnisharp.setup{
 require'lspconfig'.rust_analyzer.setup{
 }
 
+require'lspconfig'.clangd {
+
+}
+
 -- vim:et ts=2 sw=2
