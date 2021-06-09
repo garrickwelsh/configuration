@@ -15,4 +15,8 @@ require'lspconfig'.clangd.setup {
 
 }
 
+--require'lspconfig'.rls.setup {
+--
+--}
+
 -- vim:et ts=2 sw=2
