@@ -13,7 +13,7 @@ if !exists('g:vscode')
 	source $HOME/.config/nvim/plugin-config/gruvbox.vim
 	source $HOME/.config/nvim/plugin-config/fzf.vim
 	source $HOME/.config/nvim/plugin-config/lightline.vim
-	source $HOME/.config/nvim/plugin-config/nerdtree.vim
+	" source $HOME/.config/nvim/plugin-config/nerdtree.vim
 	source $HOME/.config/nvim/plugin-config/signify.vim
 	source $HOME/.config/nvim/plugin-config/telescope.vim
 	if has('nvim-0.5')
