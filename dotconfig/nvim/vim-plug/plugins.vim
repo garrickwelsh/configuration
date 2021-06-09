@@ -9,23 +9,17 @@ endif
 call plug#begin('~/.config/nvim/autoload/plugged')
 
 	" Load plugins
-	" Plug 'ciaranm/securemodelines'
-	Plug 'editorconfig/editorconfig-vim'
-	" Plug 'justinmk/vim-sneak'
+	Plug 'editorconfig/editorconfig-vim' " reads .editoconfig settings and applies them
 	
 	" GUI enhancements
 	Plug 'itchyny/lightline.vim'
 	Plug 'machakann/vim-highlightedyank'
-	" Plug 'andymass/vim-matchup'
 
 
 	" Fuzzy finder
 	Plug 'airblade/vim-rooter'
 	Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 	Plug 'junegunn/fzf.vim'
-
-	" Plug 'scrooloose/nerdtree'
-	" Plug 'xuyuanp/nerdtree-git-plugin'
 
 	" Syntactic language support
 	Plug 'rust-lang/rust.vim'
