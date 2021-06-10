@@ -60,7 +60,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 			" Display lsp lightline in neovim
 			Plug 'halkn/lightline-lsp'
 			Plug 'nvim-lua/lsp-status.nvim' " lsp Status functions to use in lightline
-
+			Plug 'josa42/nvim-lightline-lsp'
 			" Awesome rust tools for nvim lsp
 			Plug 'simrat39/rust-tools.nvim'
 

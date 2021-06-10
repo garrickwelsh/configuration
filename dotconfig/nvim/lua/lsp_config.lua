@@ -1,18 +1,31 @@
-local util = require'lspconfig/util'
-local pid = vim.fn.getpid()
+--local lsp_status = require('lsp-status')
+--lsp_status.register_progress()
+
 local omnisharp_bin = "/usr/bin/omnisharp"
+local pid = vim.fn.getpid()
+local util = require'lspconfig/util'
+local lsp_config = require('lspconfig')
 
-require'lspconfig'.omnisharp.setup{
-  cmd = { omnisharp_bin, "--languageserver", "--hostPID", tostring(pid) };
---  root_dir = util.root_pattern(".sln", ".csproj");
 
+
+lsp_config.omnisharp.setup{
+  cmd = { omnisharp_bin, "--languageserver", "--hostPID", tostring(pid) },
+--  on_attach = lsp_status.on_attach,
+--  capabilities = lsp_status.capabilities
 }
 
-require'lspconfig'.rust_analyzer.setup{
+lsp_config.rust_analyzer.setup{
+--  on_attach = lsp_status.on_attach,
+--  capabilities = lsp_status.capabilities
 }
 
-require'lspconfig'.clangd.setup {
-
+lsp_config.clangd.setup {
+--  handlers = lsp_status.extensions.clangd.setup(),
+--  init_options = {
+--    clangdFileStatus = true
+--  },
+--  on_attach = lsp_status.on_attach,
+--  capabilities = lsp_status.capabilities
 }
 
 --require'lspconfig'.rls.setup {

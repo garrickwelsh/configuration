@@ -1,73 +1,41 @@
-let g:lightline_lsp_signs_ok = 1
+" Register the components:
+let g:lightline = {}
+let g:lightline.component_expand = {
+  \   'linter_warnings': 'lightline#lsp#warnings',
+  \   'linter_errors': 'lightline#lsp#errors',
+  \   'linter_info': 'lightline#lsp#info',
+  \   'linter_hints': 'lightline#lsp#hints',
+  \   'linter_ok': 'lightline#lsp#ok',
+  \   'status': 'lightline#lsp#status',
+  \   'fugitive': 'fugitive#statusline',
+  \ }
 
-lua << END
-local lsp_status = require('lsp-status')
-lsp_status.register_progress()
+" Set color to the components:
+let g:lightline.component_type = {
+  \   'linter_warnings': 'warning',
+  \   'linter_errors': 'error',
+  \   'linter_info': 'info',
+  \   'linter_hints': 'hints',
+  \   'linter_ok': 'left',
+  \ }
 
-local lspconfig = require('lspconfig')
-
--- Some arbitrary servers
-lspconfig.clangd.setup({
-  handlers = lsp_status.extensions.clangd.setup(),
-  init_options = {
-    clangdFileStatus = true
-  },
-  on_attach = lsp_status.on_attach,
-  capabilities = lsp_status.capabilities
-})
-
-lspconfig.pyls_ms.setup({
-  handlers = lsp_status.extensions.pyls_ms.setup(),
-  settings = { python = { workspaceSymbols = { enabled = true }}},
-  on_attach = lsp_status.on_attach,
-  capabilities = lsp_status.capabilities
-})
-
-lspconfig.omnisharp.setup({
-  on_attach = lsp_status.on_attach,
-  capabilities = lsp_status.capabilities
-})
-
-lspconfig.rust_analyzer.setup({
-  on_attach = lsp_status.on_attach,
-  capabilities = lsp_status.capabilities
-})
-END
-
-" Statusline
-function! LspStatus() abort
-  if luaeval('#vim.lsp.buf_get_clients() > 0')
-    return luaeval("require('lsp-status').status()")
-  endif
-
-  return ''
-endfunction
-
-let g:lightline = {
-	\ 'active': {
-	\   'left': [ [ 'mode', 'paste' ],
-	\				[ 'filename', 'modified', 'readonly'], 
-	\				[ 'fugitive' ],
-	\				[ 'lsp_status' ],
-	\				[ 'relativepath' ],
-	\			],
-	\   'right': [ 
-	\              [ 'percent' ],
-	\              [ 'fileformat', 'fileencoding', 'filetype' ]
-	\			]
-	\ },
-	\ 'component_expand': {
-	\   'lsp_warnings': 'lightline_lsp#warnings',
-	\   'lsp_errors':   'lightline_lsp#errors',
-	\   'lsp_ok':       'lightline_lsp#ok',
-	\ },
-	\ 'component_type': {
-	\   'lsp_warnings': 'warning',
-	\   'lsp_errors':   'error',
-	\   'lsp_ok':       'middle',
-	\ },
-	\ 'component_function': {
-	\   'lsp_status': 'LspStatus',
-	\	'fugitive': 'fugitive#statusline'
-	\ },
+" Add the components to the lightline:
+let g:lightline.active = {
+\			'left': [
+\				[ 'mode', 'paste' ],
+\				[ 'filename', 'modified', 'readonly'], 
+\				[ 'fugitive' ],
+\				[ 'lsp_info', 'lsp_hints', 'lsp_errors', 'lsp_warnings', 'lsp_ok' ], [ 'lsp_status' ],
+\				[ 'relativepath' ]],
+\			'right': [ 
+\				[ 'percent' ],
+\				[ 'fileformat', 'fileencoding', 'filetype' ]
+\			],
 \ }
+
+let g:lightline.inactive = {
+\ 'left': [ [ 'filename' ] ],
+\ 'right': [ [ 'lineinfo' ],
+\            [ 'percent' ] ] }
+" register compoments:
+call lightline#lsp#register()
