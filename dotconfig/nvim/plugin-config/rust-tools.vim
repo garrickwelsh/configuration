@@ -1,5 +1,5 @@
 
-autocmd FileType rust lua require('rust-tools.inlay_hints').set_inlay_hints({ show_parameter_hints = true, parameter_hints_prefix = "<-", other_hints_prefix  = "=>"})
+"autocmd FileType rust :lua require('rust-tools.inlay_hints').set_inlay_hints({ show_parameter_hints = true, parameter_hints_prefix = "<-", other_hints_prefix  = "=>"})
 nnoremap <silent><nowait> <leader>ri :lua require('rust-tools.inlay_hints').toggle_inlay_hints({ show_parameter_hints = true, parameter_hints_prefix = "<-", other_hints_prefix  = "=>"})<CR>
 nnoremap <silent><nowait> <leader>rr :lua require('rust-tools.runnables').runnables({ use_telescope = true })<CR>
 nnoremap <silent><nowait> <leader>rem :lua require'rust-tools.expand_macro'.expand_macro()<CR>

@@ -49,6 +49,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 		if has('nvim-0.5')
 			" Collection of common configurations for the Nvim LSP client
 			Plug 'neovim/nvim-lspconfig'
+			Plug 'kabouzeid/nvim-lspinstall'
 			Plug 'hrsh7th/nvim-compe' "Autocompletion plugin for lsp
 
 			" Extensions to built-in LSP, for example, providing type inlay hints

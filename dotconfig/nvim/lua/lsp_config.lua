@@ -1,35 +1,29 @@
---local lsp_status = require('lsp-status')
---lsp_status.register_progress()
+require'lspinstall'.setup() -- important
 
-local omnisharp_bin = "/usr/bin/omnisharp"
-local pid = vim.fn.getpid()
-local util = require'lspconfig/util'
-local lsp_config = require('lspconfig')
+local servers = require'lspinstall'.installed_servers()
+for _, server in pairs(servers) do
+  require'lspconfig'[server].setup{}
+end
 
+-- nvim_lsp object
+local nvim_lsp = require'lspconfig'
 
+-- function to attach completion when setting up lsp
+local on_attach = function(client)
+    require'completion'.on_attach(client)
+end
 
-lsp_config.omnisharp.setup{
-  cmd = { omnisharp_bin, "--languageserver", "--hostPID", tostring(pid) },
---  on_attach = lsp_status.on_attach,
---  capabilities = lsp_status.capabilities
-}
+-- Enable rust_analyzer
+nvim_lsp.rust_analyzer.setup({ on_attach=on_attach })
 
-lsp_config.rust_analyzer.setup{
---  on_attach = lsp_status.on_attach,
---  capabilities = lsp_status.capabilities
-}
+-- Enable diagnostics
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+  vim.lsp.diagnostic.on_publish_diagnostics, {
+    virtual_text = true,
+    signs = true,
+    update_in_insert = true,
+  }
+)
 
-lsp_config.clangd.setup {
---  handlers = lsp_status.extensions.clangd.setup(),
---  init_options = {
---    clangdFileStatus = true
---  },
---  on_attach = lsp_status.on_attach,
---  capabilities = lsp_status.capabilities
-}
-
---require'lspconfig'.rls.setup {
---
---}
 
 -- vim:et ts=2 sw=2
