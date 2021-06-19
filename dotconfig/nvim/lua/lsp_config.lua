@@ -1,20 +1,34 @@
-require'lspinstall'.setup() -- important
 
-local servers = require'lspinstall'.installed_servers()
-for _, server in pairs(servers) do
-  require'lspconfig'[server].setup{}
+
+-- config that activates keymaps and enables snippet support
+local function make_config()
+  local capabilities = vim.lsp.protocol.make_client_capabilities()
+  capabilities.textDocument.completion.completionItem.snippetSupport = true
+  return {
+    -- enable snippet support
+    capabilities = capabilities,
+    -- map buffer local keybindings when the language server attaches
+    on_attach = on_attach,
+  }
 end
-
--- nvim_lsp object
-local nvim_lsp = require'lspconfig'
 
 -- function to attach completion when setting up lsp
 local on_attach = function(client)
     require'completion'.on_attach(client)
 end
 
--- Enable rust_analyzer
-nvim_lsp.rust_analyzer.setup({ on_attach=on_attach })
+require'lspinstall'.setup() -- important
+
+local servers = require'lspinstall'.installed_servers()
+for _, server in pairs(servers) do
+  local config = make_config()
+
+  if server == "rust" then
+    config.onattach=on_attach
+  end  
+
+  require'lspconfig'[server].setup(config)
+end
 
 -- Enable diagnostics
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
