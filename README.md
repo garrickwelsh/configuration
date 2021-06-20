@@ -1,21 +1,24 @@
 # Linux Configuration
 
-This configuration is setup my linux development environments.
+This configuration is the setup of my linux development environments.
 
-My configuration was developed for my Arch linux setup. So there are things setup that I don't know if they will be more difficult on another distribution.
+The only things that might not be part of a regular install are neovim nightly and the First Code font. For neovim nightly I use paru to build an Arch package.
 
 ## Configuration Installation
 Use the shell scripts to use the configuration one of your programs. The shell scripts will create hardlinks so changes will be reflected in your clone of this git repository and will be easy for you to update and save your changes to it.
 * hardlink-neovim.sh - Setup neovim configuration
+* hardlink-tmux.sh
+* hardlink-alacritty.sh
+* hardlink-starship.sh
 
 ## Neovim Configuration with LSP configured - Neovim 0.5 (nightly)
 This configuration is setup to against a nightly build of neovim heading towards the 0.5 release.
 
-I have set it up to utilise the the new LSP server. To get it up and running you will neeed to do the following:
+Neovim is setup to utilise the the new LSP server. To get neovim up and running with this config you will neeed to do the following:
 * Install neovim nightly. Vim-Plug is used to install the required vim plugins (https://github.com/junegunn/vim-plug)
-* When you start nvim you will see errors. Simply run :Plug-Install and restart and you should be ready to go.
+* When you start nvim you will see errors. Simply run __:Plug-Install__ and restart and you should be ready to go.
 * To install an lsp use __:LspInstall <language>__ e.g. __:LspInstall rust__ (https://github.com/kabouzeid/nvim-lspinstall)
-	* Note: nvom-lspinstall does not yet have support for windows.
+	* Note: nvim-lspinstall does not yet have support for windows.
 * The default lsp key bindings will use Telescope where possible. Please see lsp_config.vim and telescope.vim for the key bindings.
 
 ## Tmux
