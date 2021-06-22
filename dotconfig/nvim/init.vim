@@ -17,9 +17,9 @@ if !exists('g:vscode')
 	if has('nvim-0.5')
 		lua require('lsp_config')
 		source $HOME/.config/nvim/plugin-config/lsp_config.vim
+		lua require('rust-tools-config')
 		source $HOME/.config/nvim/plugin-config/rust-tools.vim
 		source $HOME/.config/nvim/plugin-config/telescope.vim
-		" lua require('rust-tools-config')
 	endif
 endif
 
