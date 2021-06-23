@@ -9,7 +9,6 @@ source $HOME/.config/nvim/config/nvim.vim
 source $HOME/.config/nvim/vim-plug/plugins.vim
 
 if !exists('g:vscode')
-	source $HOME/.config/nvim/plugin-config/emoji.vim
 	source $HOME/.config/nvim/plugin-config/gruvbox.vim
 	source $HOME/.config/nvim/plugin-config/fzf.vim
 	source $HOME/.config/nvim/plugin-config/lightline.vim

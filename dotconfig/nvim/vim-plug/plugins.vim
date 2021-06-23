@@ -42,11 +42,8 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 		" Enable devicons
 		Plug 'ryanoasis/vim-devicons'
 
-		" Use Emojis in neovim
-		Plug 'junegunn/vim-emoji'
 		" gruvbox colour schemes
 		Plug 'morhetz/gruvbox'
-		" Plugin 'joshdick/onedark.vim'
 		
 		if has('nvim-0.5')
 			" Collection of common configurations for the Nvim LSP client
