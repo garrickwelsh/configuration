@@ -31,6 +31,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 
 		" Status line
 		Plug 'itchyny/lightline.vim'
+		Plug 'itchyny/vim-gitbranch'
 		" Plug 'hoob3rt/lualine.nvim'
 
 		" Syntax mark indent alignment
