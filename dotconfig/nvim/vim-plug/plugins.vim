@@ -12,7 +12,6 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 	Plug 'editorconfig/editorconfig-vim' " reads .editoconfig settings and applies them
 	
 	" GUI enhancements
-	Plug 'itchyny/lightline.vim'
 	Plug 'machakann/vim-highlightedyank'
 
 
@@ -29,6 +28,11 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 	Plug 'plasticboy/vim-markdown'
 	
 	if !exists('g:vscode')
+
+		" Status line
+		Plug 'itchyny/lightline.vim'
+		" Plug 'hoob3rt/lualine.nvim'
+
 		" Syntax mark indent alignment
 		Plug 'nathanaelkane/vim-indent-guides'
 
@@ -58,7 +62,6 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 			Plug 'nvim-lua/completion-nvim'	" VIM enhancements
 
 			" Display lsp lightline in neovim
-			Plug 'nvim-lua/lsp-status.nvim' " lsp Status functions to use in lightline
 			Plug 'josa42/nvim-lightline-lsp'
 			" Awesome rust tools for nvim lsp
 			Plug 'simrat39/rust-tools.nvim'

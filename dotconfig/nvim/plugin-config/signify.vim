@@ -1,5 +1,5 @@
-" Change the signify symbols if desired
-let g:signify_sign_add               = '+'
+" Change the signify symbols if desired. Note it is possible to replace with nerd fonts like 
+let g:signify_sign_add               = '+' 
 let g:signify_sign_delete            = '_'
 let g:signify_sign_delete_first_line = '‾'
 let g:signify_sign_change            = '!'
@@ -13,9 +13,3 @@ let g:signify_sign_show_text = 1
 " Next hunk
 nmap <leader>gn <plug>(signify-next-hunk)
 nmap <leader>gp <plug>(signify-prev-hunk)
-
-"let g:signify_sign_add 			= '+'
-"let g:signify_sign_delete 		= '_'
-"let g:signify_sign_delete_first_line	= '-'
-"let g:signify_sign_change		= '~'
-

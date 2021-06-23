@@ -28,13 +28,14 @@ endfunction
 let g:lightline.active = {
 \			'left': [
 \				[ 'mode', 'paste' ],
-\				[ 'filename', 'modified', 'readonly'], 
-\				[ 'fugitive' ],
-\				[ 'lsp_info', 'lsp_hints', 'lsp_errors', 'lsp_warnings', 'lsp_ok' ], [ 'lsp_status' ]
+\				[ 'filename', 'modified', 'readonly'],
+\				[ 'lsp_status' ],
 \			],
 \			'right': [ 
+\				[ 'fugitive' ],
+\				[ 'lsp_info', 'lsp_hints', 'lsp_errors', 'lsp_warnings', 'lsp_ok' ], 
 \				[ 'percent' ],
-\				[ 'fileformat', 'fileencoding', 'filetype' ]
+\				[ 'fileformat', 'fileencoding', 'filetype' ],
 \			],
 \ }
 
