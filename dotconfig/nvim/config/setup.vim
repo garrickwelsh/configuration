@@ -6,8 +6,8 @@ set number
 syntax on
 
 "Let's make encoding UTF-8 by default
-set encoding=UTF-8
-set fileencoding=UTF-8
+set encoding=utf-8
+set fileencoding=utf-8
 
 
 filetype off

@@ -26,7 +26,7 @@ local servers = require'lspinstall'.installed_servers()
 for _, server in pairs(servers) do
   local config = make_config()
   config.capabilities = vim.tbl_extend('keep', config.capabilities or {}, lsp_status.capabilities)
-			
+
   require'lspconfig'[server].setup(config)
 end
 

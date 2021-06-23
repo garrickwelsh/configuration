@@ -39,9 +39,11 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 		Plug 'tpope/vim-rhubarb'
 		Plug 'junegunn/gv.vim'
 
+		" Enable devicons
+		Plug 'ryanoasis/vim-devicons'
+
 		" Use Emojis in neovim
 		Plug 'junegunn/vim-emoji'
-
 		" gruvbox colour schemes
 		Plug 'morhetz/gruvbox'
 		" Plugin 'joshdick/onedark.vim'
