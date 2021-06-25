@@ -29,10 +29,6 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 	
 	if !exists('g:vscode')
 
-		" Status line
-		Plug 'itchyny/lightline.vim'
-		Plug 'itchyny/vim-gitbranch'
-		" Plug 'hoob3rt/lualine.nvim'
 
 		" Syntax mark indent alignment
 		Plug 'nathanaelkane/vim-indent-guides'
@@ -62,8 +58,13 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 			" Autocompletion framework for built-in LSP
 			Plug 'nvim-lua/completion-nvim'	" VIM enhancements
 
+			" Status line
+			"Plug 'itchyny/lightline.vim'
+			"Plug 'itchyny/vim-gitbranch'
+			Plug 'hoob3rt/lualine.nvim'
 			" Display lsp lightline in neovim
-			Plug 'josa42/nvim-lightline-lsp'
+			"Plug 'josa42/nvim-lightline-lsp'
+			
 			" Awesome rust tools for nvim lsp
 			Plug 'simrat39/rust-tools.nvim'
 
