@@ -17,7 +17,6 @@ LspProgress.new = function(self, options, child)
   new_lsp_progress.progress_callback = function (_, _, msg, client_id)
   	local tok = msg.token
   	local val = msg.value
-  	local progress_message = ''
 
 	-- print(vim.inspect(msg))
 
@@ -43,24 +42,16 @@ LspProgress.new = function(self, options, child)
 				end
   			end
 			if val.kind == 'end' then
-				LspProgress.progress[tok] = nil
+				if progress.percentage ~= nil then
+					progress.percentage = '100'
+				end
+				vim.defer_fn(function() 
+					LspProgress.progress[tok] = nil
+					LspProgress.update_progress()
+				end, 1000)
 			end
   		end
-		for _, progress in pairs(LspProgress.progress) do
-			if progress.title ~= nil then
-				if progress_message ~= '' then
-					progress_message = progress_message .. ' | '
-				end
-				progress_message = progress_message .. progress.title .. ': ' 
-				if progress.percentage ~= nil then
-					progress_message = progress_message .. progress.percentage .. '%% ' .. '(' .. progress.message .. ')'
-				elseif progress.message ~= nil then
-					progress_message = progress_message .. progress.message
-				end
-			end
-	--	print(vim.inspect(progress))
-		end
-		LspProgress.progress_message = progress_message
+		LspProgress.update_progress()
 		--print(vim.inspect(msg))
   	end
   end
@@ -73,6 +64,25 @@ LspProgress.new = function(self, options, child)
 
   -- print(LspProgress.progress.message)
   return new_lsp_progress
+end
+
+LspProgress.update_progress = function() 
+  	local progress_message = ''
+	for _, progress in pairs(LspProgress.progress) do
+		if progress.title ~= nil then
+			if progress_message ~= '' then
+				progress_message = progress_message .. ' | '
+			end
+			progress_message = progress_message .. progress.title .. ': ' 
+			if progress.percentage ~= nil then
+				progress_message = progress_message .. progress.percentage .. '%% ' .. '(' .. progress.message .. ')'
+			elseif progress.message ~= nil then
+				progress_message = progress_message .. progress.message
+			end
+		end
+--	print(vim.inspect(progress))
+	end
+	LspProgress.progress_message = progress_message
 end
 
 LspProgress.update_status = function(self)
