@@ -19,7 +19,7 @@ LspProgress.new = function(self, options, child)
   	local val = msg.value
   	local progress_message = ''
 
-	print(vim.inspect(msg))
+	-- print(vim.inspect(msg))
 
   	if tok ~= nil then
 		if LspProgress.progress[tok] == nil then
@@ -71,7 +71,7 @@ LspProgress.new = function(self, options, child)
 
   new_lsp_progress:register_progress()
 
-  print(LspProgress.progress.message)
+  -- print(LspProgress.progress.message)
 
   return new_lsp_progress
 end
