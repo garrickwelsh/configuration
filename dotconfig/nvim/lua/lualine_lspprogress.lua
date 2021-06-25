@@ -72,7 +72,6 @@ LspProgress.new = function(self, options, child)
   new_lsp_progress:register_progress()
 
   -- print(LspProgress.progress.message)
-
   return new_lsp_progress
 end
 
