@@ -17,8 +17,10 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 
 	" Fuzzy finder
 	Plug 'airblade/vim-rooter'
-	Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-	Plug 'junegunn/fzf.vim'
+
+	" FZF Fuzzy finder
+	"Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+	"Plug 'junegunn/fzf.vim'
 
 	" Syntactic language support
 	Plug 'rust-lang/rust.vim'
@@ -58,12 +60,13 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 			" Autocompletion framework for built-in LSP
 			Plug 'nvim-lua/completion-nvim'	" VIM enhancements
 
-			" Status line
+			" Lightline
 			"Plug 'itchyny/lightline.vim'
 			"Plug 'itchyny/vim-gitbranch'
-			Plug 'hoob3rt/lualine.nvim'
-			" Display lsp lightline in neovim
 			"Plug 'josa42/nvim-lightline-lsp'
+			
+			" Lualine
+			Plug 'hoob3rt/lualine.nvim'
 			
 			" Awesome rust tools for nvim lsp
 			Plug 'simrat39/rust-tools.nvim'
@@ -72,7 +75,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 			Plug 'nvim-lua/popup.nvim'
 			" Module to interact with system processes
 			Plug 'nvim-lua/plenary.nvim'
-			" Fast finder fzf
+			" Fast finder 
 			Plug 'nvim-telescope/telescope.nvim'
 		endif
 	endif

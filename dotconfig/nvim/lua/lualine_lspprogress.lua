@@ -5,27 +5,47 @@ local LspProgress = require('lualine.component'):new()
 
 -- LuaFormatter off
 LspProgress.default_colors = {
-  info  = '#ffffff',
+  percentage  = '#ffffff',
+  title  = '#ffffff',
+  message  = '#ffffff',
 }
 
-LspProgress.progress = { }
+-- Information before and after information sent from the LSP
+LspProgress.default_separators = {
+	seperator = ' | ',
+	message = { pre = '(', post = ')'},
+	percentage = { pre = '', post = '%%' },
+	title = { pre = '', post = ': ' },
+}
+
+LspProgress.seperators = {
+}
+
+-- The order to display the information from the LSP
+LspProgress.display_components = { 'title', 'percentage', 'message' }
+
+LspProgress.progress = {}
 
 -- Initializer
 LspProgress.new = function(self, options, child)
   local new_lsp_progress = self._parent:new(options, child or LspProgress)
 
+  for i, j in pairs(LspProgress.default_separators) do
+	  LspProgress.seperators[i] = j
+  end
+
   new_lsp_progress.progress_callback = function (_, _, msg, client_id)
-  	local tok = msg.token
+  	local key = msg.token
   	local val = msg.value
 
 	-- print(vim.inspect(msg))
 
-  	if tok ~= nil then
-		if LspProgress.progress[tok] == nil then
-			LspProgress.progress[tok] = { title = nil, message = nil, percentage = nil }
+  	if key then
+		if LspProgress.progress[key] == nil then
+			LspProgress.progress[key] = { title = nil, message = nil, percentage = nil }
 		end
 
-		local progress = LspProgress.progress[tok]
+		local progress = LspProgress.progress[key]
 
 		--print(vim.inspect(progress))
 
@@ -42,11 +62,12 @@ LspProgress.new = function(self, options, child)
 				end
   			end
 			if val.kind == 'end' then
-				if progress.percentage ~= nil then
+				if progress.percentage then
 					progress.percentage = '100'
+					progress.message = 'Completed'
 				end
 				vim.defer_fn(function() 
-					LspProgress.progress[tok] = nil
+					LspProgress.progress[key] = nil
 					LspProgress.update_progress()
 				end, 1000)
 			end
@@ -68,21 +89,24 @@ end
 
 LspProgress.update_progress = function() 
   	local progress_message = ''
+	local result = {}
 	for _, progress in pairs(LspProgress.progress) do
-		if progress.title ~= nil then
-			if progress_message ~= '' then
-				progress_message = progress_message .. ' | '
+		local p = {}
+		if progress.title then
+			for _, i in pairs(LspProgress.display_components) do
+				if progress[i] then
+					table.insert(p, LspProgress.seperators[i].pre .. progress[i] .. LspProgress.seperators[i].post)
+				end
 			end
-			progress_message = progress_message .. progress.title .. ': ' 
-			if progress.percentage ~= nil then
-				progress_message = progress_message .. progress.percentage .. '%% ' .. '(' .. progress.message .. ')'
-			elseif progress.message ~= nil then
-				progress_message = progress_message .. progress.message
-			end
+			table.insert(result, table.concat(p, ''))
 		end
 --	print(vim.inspect(progress))
 	end
-	LspProgress.progress_message = progress_message
+	if #result > 0 then
+		LspProgress.progress_message = table.concat(result, LspProgress.seperators.seperator)
+	else
+		LspProgress.progress_message = ''
+	end
 end
 
 LspProgress.update_status = function(self)
