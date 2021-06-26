@@ -83,10 +83,10 @@ ins_left {
   color = {fg = '#ffffff', gui = 'bold'}
 }
 
-local lspProgress = require('lualine_lspprogress'):new()
+--local lspProgress = require('lualine_lspprogress'):new()
 
 ins_left {
-	lspProgress.update_status
+	'lspprogress'
 }
 
 
