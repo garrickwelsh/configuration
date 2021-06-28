@@ -3,37 +3,58 @@ local utils = require('lualine.utils.utils')
 
 local LspProgress = require('lualine.component'):new()
 
+print('Hello\n')
 -- LuaFormatter off
-LspProgress.default_colors = {
-  percentage  = '#ffffff',
-  title  = '#ffffff',
-  message  = '#ffffff',
+LspProgress.default = {
+	colors = {
+	  percentage  = '#ffffff',
+	  title  = '#ffffff',
+	  message  = '#ffffff',
+	},
+	seperators = {
+		seperator = ' | ',
+		message = { pre = '(', post = ')'},
+		percentage = { pre = '', post = '%% ' },
+		title = { pre = '', post = ': ' },
+	},
+	display_components = { 'title', 'percentage', 'message' },
+	timer = { enddelay = 500, spinner = 200 },
+	--spinner_symbols_spinner = { '-', '/', '|', "\\" },
+	spinner_symbols = { ' ', ' ', ' ', ' ', ' ', ' ' },
 }
 
 -- Information before and after information sent from the LSP
-LspProgress.default_separators = {
-	seperator = ' | ',
-	message = { pre = '(', post = ')'},
-	percentage = { pre = '', post = '%%' },
-	title = { pre = '', post = ': ' },
+print('world\n')
+LspProgress.config = {
+	seperators = {
+	},
+	colors = {},
+	-- The order to display the information from the LSP
+	display_components = {},
+	timer = {},
+	spinner_symbols = {},
 }
-
-LspProgress.seperators = {
-}
-
--- The order to display the information from the LSP
-LspProgress.display_components = { 'title', 'percentage', 'message' }
-
+print('progress\n')
 LspProgress.progress = {}
 
+print('spinner\n')
+LspProgress.spinner = { }
+print('LspProgress started')
 -- Initializer
 LspProgress.new = function(self, options, child)
   local new_lsp_progress = self._parent:new(options, child or LspProgress)
 
-  for i, j in pairs(LspProgress.default_separators) do
-	  LspProgress.seperators[i] = j
+  -- Setup default separators override these values with ones from the config.
+  for i, j in pairs(LspProgress.default) do
+--	  print(vim.inspect(j) .. '\n')
+	  for k, l in pairs(j) do
+		  LspProgress.config[i][k] = l
+	  end
   end
 
+  setup_spinner()
+
+  -- Setup callback to get updates from the lsp to update lualine.
   new_lsp_progress.progress_callback = function (_, _, msg, client_id)
   	local key = msg.token
   	local val = msg.value
@@ -49,15 +70,15 @@ LspProgress.new = function(self, options, child)
 
 		--print(vim.inspect(progress))
 
-  		if val ~= nil then
+  		if val then
   			if val.kind == 'begin' then
 				progress.title = val.title
   			end
 			if val.kind == 'report' then
-				if val.percentage ~= nil then
+				if val.percentage then
 					progress.percentage = val.percentage
 				end
-				if val.message ~= nil then
+				if val.message then
 					progress.message = val.message
 				end
   			end
@@ -69,7 +90,7 @@ LspProgress.new = function(self, options, child)
 				vim.defer_fn(function() 
 					LspProgress.progress[key] = nil
 					LspProgress.update_progress()
-				end, 1000)
+				end, LspProgress.config.timer.enddelay)
 			end
   		end
 		LspProgress.update_progress()
@@ -93,9 +114,9 @@ LspProgress.update_progress = function()
 	for _, progress in pairs(LspProgress.progress) do
 		local p = {}
 		if progress.title then
-			for _, i in pairs(LspProgress.display_components) do
+			for _, i in pairs(LspProgress.config.display_components) do
 				if progress[i] then
-					table.insert(p, LspProgress.seperators[i].pre .. progress[i] .. LspProgress.seperators[i].post)
+					table.insert(p, LspProgress.config.seperators[i].pre .. progress[i] .. LspProgress.config.seperators[i].post)
 				end
 			end
 			table.insert(result, table.concat(p, ''))
@@ -103,14 +124,31 @@ LspProgress.update_progress = function()
 --	print(vim.inspect(progress))
 	end
 	if #result > 0 then
-		LspProgress.progress_message = table.concat(result, LspProgress.seperators.seperator)
+		LspProgress.progress_message = table.concat(result, LspProgress.config.seperators.seperator)
 	else
 		LspProgress.progress_message = ''
 	end
 end
 
 LspProgress.update_status = function(self)
-	return LspProgress.progress_message
+	if LspProgress.progress_message and LspProgress.progress_message ~= '' then
+		return LspProgress.spinner.symbol .. LspProgress.progress_message
+	end
+	return nil
+end
+function setup_spinner()
+	LspProgress.spinner.index = 0
+	LspProgress.spinner.symbol_mod = #LspProgress.config.spinner_symbols 
+	local timer = vim.loop.new_timer()
+	timer:start(0, LspProgress.config.timer.spinner,
+	function()
+	--	print('Spinner\n\r')
+	--	print(LspProgress.spinner.index .. '\n\r')
+		LspProgress.spinner.index = (LspProgress.spinner.index % LspProgress.spinner.symbol_mod) + 1
+	--	print(LspProgress.spinner.index .. '\n\r')
+		LspProgress.spinner.symbol = LspProgress.config.spinner_symbols[LspProgress.spinner.index]
+	--	print(LspProgress.spinner.index .. ': ' .. LspProgress.spinner.symbol .. '\n\r')
+	end)
 end
 
 return LspProgress
