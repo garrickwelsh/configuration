@@ -10,6 +10,8 @@ LspProgress.default = {
 	  percentage  = '#ffffff',
 	  title  = '#ffffff',
 	  message  = '#ffffff',
+	  spinner = '#008080',
+	  use = true,
 	},
 	seperators = {
 		seperator = ' | ',
@@ -18,7 +20,8 @@ LspProgress.default = {
 		title = { pre = '', post = ': ' },
 	},
 	display_components = { 'title', 'percentage', 'message' },
-	timer = { enddelay = 500, spinner = 700 },
+	display_spinner = true,
+	timer = { enddelay = 500, spinner = 1000 },
 	--spinner_symbols_spinner = { '-', '/', '|', "\\" },
 	spinner_symbols = { ' ', ' ', ' ', ' ', ' ', ' ' },
 }
@@ -37,51 +40,45 @@ LspProgress.new = function(self, options, child)
 										new_lsp_progress.options.timer or {})
   new_lsp_progress.options.spinner_symbols = vim.tbl_extend('force', LspProgress.default.spinner_symbols, 
 										new_lsp_progress.options.spinner_symbols or {})
+  new_lsp_progress.options.display_spinner = new_lsp_progress.options.display_spinner or LspProgress.default.display_spinner
 
-  new_lsp_progress:setup_spinner()
+  new_lsp_progress.highlights = { percentage = '', title = '', message = '' }
+  if new_lsp_progress.options.colors.use then
+    new_lsp_progress.highlights.title = highlight.create_component_highlight_group(
+	  { fg = new_lsp_progress.options.colors.title }, 'lspprogress_title', new_lsp_progress.options
+    )
+    new_lsp_progress.highlights.percentage = highlight.create_component_highlight_group(
+	  { fg = new_lsp_progress.options.colors.percentage }, 'lspprogress_percentage', new_lsp_progress.options
+    )
+    new_lsp_progress.highlights.message = highlight.create_component_highlight_group(
+	  { fg = new_lsp_progress.options.colors.message }, 'lspprogress_message', new_lsp_progress.options
+    )
+    new_lsp_progress.highlights.spinner = highlight.create_component_highlight_group(
+	  { fg = new_lsp_progress.options.colors.spinner }, 'lspprogress_spinner', new_lsp_progress.options
+    )
+  end
 
-  new_lsp_progress.progress = {}
+
 
   -- Setup callback to get updates from the lsp to update lualine.
 
   new_lsp_progress:register_progress()
+  -- No point in setting spinner callbacks if it is not displayed.
+  if new_lsp_progress.options.display_spinner then
+	  new_lsp_progress:setup_spinner()
+  end
 
   -- print(LspProgress.progress.message)
   return new_lsp_progress
 end
 
 LspProgress.update_status = function(self)
-	if self.progress_message and self.progress_message ~= '' then
-		return self.spinner.symbol .. self.progress_message
-	end
-	return nil
-end
-
-LspProgress.update_progress = function(self)
-	local options = self.options
-  	local progress_message = ''
-	local result = {}
-	for _, progress in pairs(self.progress) do
-		local p = {}
-		if progress.title then
-			for _, i in pairs(options.display_components) do
-				if progress[i] then
-					table.insert(p, options.seperators[i].pre .. progress[i] .. options.seperators[i].post)
-				end
-			end
-			table.insert(result, table.concat(p, ''))
-		end
---	print(vim.inspect(progress))
-	end
-	if #result > 0 then
-		self.progress_message = table.concat(result, options.seperators.seperator)
-	else
-		self.progress_message = ''
-	end
+	return self.progress_message
 end
 
 
 LspProgress.register_progress = function(self)
+  self.progress = {}
   self.progress_callback = function (_, _, msg, client_id)
   	local key = msg.token
   	local val = msg.value
@@ -128,11 +125,46 @@ LspProgress.register_progress = function(self)
   vim.lsp.handlers["$/progress"] = self.progress_callback
 end
 
+LspProgress.update_progress = function(self)
+	local options = self.options
+	local result = {}
+
+	if options.display_spinner then
+		if options.colors.use then
+			table.insert(result, highlight.component_format_highlight(self.highlights.spinner) .. self.progress.spinner)
+		else
+			table.insert(result, self.progress.spinner)
+		end
+	end
+
+	for _, progress in pairs(self.progress) do
+		local p = {}
+		if progress.title then
+			for _, i in pairs(options.display_components) do
+				if progress[i] then
+					if options.colors.use then
+						table.insert(p, highlight.component_format_highlight(self.highlights[i]) .. options.seperators[i].pre .. progress[i] .. options.seperators[i].post)
+					else 
+						table.insert(p, options.seperators[i].pre .. progress[i] .. options.seperators[i].post)
+					end
+				end
+			end
+			table.insert(result, table.concat(p, ''))
+		end
+--	print(vim.inspect(progress))
+	end
+	if #result > 1 or (#result > 0 and self.spinner == false) then
+		self.progress_message = table.concat(result, options.seperators.seperator)
+	else
+		self.progress_message = ''
+	end
+end
+
 LspProgress.setup_spinner = function(self)
 	self.spinner = {}
 	self.spinner.index = 0
 	self.spinner.symbol_mod = #self.options.spinner_symbols
-	self.spinner.symbol = self.options.spinner_symbols[1]
+	self.progress.spinner = self.options.spinner_symbols[1]
 	local timer = vim.loop.new_timer()
 	timer:start(0, self.options.timer.spinner,
 	function()
@@ -140,7 +172,7 @@ LspProgress.setup_spinner = function(self)
 	--	print(LspProgress.spinner.index .. '\n\r')
 		self.spinner.index = (self.spinner.index % self.spinner.symbol_mod) + 1
 	--	print(LspProgress.spinner.index .. '\n\r')
-		self.spinner.symbol = self.options.spinner_symbols[self.spinner.index]
+		self.progress.spinner = self.options.spinner_symbols[self.spinner.index]
 	--	print(LspProgress.spinner.index .. ': ' .. LspProgress.spinner.symbol .. '\n\r')
 	end)
 end
