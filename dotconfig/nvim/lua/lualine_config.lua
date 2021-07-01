@@ -39,8 +39,6 @@ local config = {
     lualine_x = {},
     lualine_y = {'encoding', 'fileformat', 'filetype'},
     lualine_z = {'branch'},
-    --lualine_y = {'progress'},
-    --lualine_z = {'location'}
   },
   inactive_sections = {
     lualine_a = {},
@@ -83,10 +81,31 @@ ins_left {
   color = {fg = '#ffffff', gui = 'bold'}
 }
 
---local lspProgress = require('lualine_lspprogress'):new()
-
 ins_left {
-	'lspprogress'
+	'lsp_progress',
+	display_components = { 'lsp_client_name', 'spinner', { 'title', 'percentage', 'message' }},
+	colors = {
+		percentage = colors.cyan,
+		title = colors.cyan,
+		message = colors.cyan,
+		spinner = colors.cyan,
+		lsp_client_name = colors.magenta,
+		use = true,
+	},
+	seperators = {
+		component = ' ',
+		progress = ' | ',
+		message = { pre = '(', post = ')'},
+		percentage = { pre = '', post = '%% ' },
+		title = { pre = '', post = ': ' },
+		lsp_client_name = { pre = '[', post = ']' },
+		spinner = { pre = '', post = '' },
+	},
+	timer = { progress_enddelay = 500, spinner = 500, lsp_client_name_enddelay = 1000 },
+	--spinner_symbols = { ' ', ' ', ' ', ' ', ' ', ' ' },
+	-- u0001F311
+	--spinner_symbols = { '🌑 ', '🌒 ', '🌓 ', '🌔 ', '🌕 ', '🌖 ', '🌗 ', '🌘 ' },
+	message = { commenced = 'In Progress', completed = 'Completed' },
 }
 
 
