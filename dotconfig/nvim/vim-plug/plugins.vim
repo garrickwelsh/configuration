@@ -60,6 +60,12 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 			" Autocompletion framework for built-in LSP
 			Plug 'nvim-lua/completion-nvim'	" VIM enhancements
 
+			" Lsp saga light-weight plugin for a performant UI.
+			Plug 'glepnir/lspsaga.nvim'
+
+			" Tree-sitter
+			Plug 'nvim-treesitter/nvim-treesitter'
+
 			" Lightline
 			"Plug 'itchyny/lightline.vim'
 			"Plug 'itchyny/vim-gitbranch'
