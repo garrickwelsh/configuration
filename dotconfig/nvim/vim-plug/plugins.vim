@@ -64,7 +64,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 			Plug 'glepnir/lspsaga.nvim'
 
 			" Tree-sitter
-			Plug 'nvim-treesitter/nvim-treesitter'
+			Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 			" Lightline
 			"Plug 'itchyny/lightline.vim'
