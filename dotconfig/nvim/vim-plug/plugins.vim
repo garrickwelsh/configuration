@@ -73,6 +73,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 			
 			" Lualine
 			Plug 'hoob3rt/lualine.nvim'
+			Plug 'arkav/lualine-lsp-progress'
 			
 			" Awesome rust tools for nvim lsp
 			Plug 'simrat39/rust-tools.nvim'
