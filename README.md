@@ -2,14 +2,15 @@
 
 This configuration is the setup of my linux development environments.
 
-The only things that might not be part of a regular install are neovim nightly and the First Code font. For neovim nightly I use paru to build an Arch package.
+This configuration utilises neovim nightly and the Fira Code font (patched with Nerd Fonts). For neovim nightly I use paru to build an aur Arch package.
 
 ## Configuration Installation
 Use the shell scripts to use the configuration one of your programs. The shell scripts will create hardlinks so changes will be reflected in your clone of this git repository and will be easy for you to update and save your changes to it.
 * hardlink-neovim.sh - Setup neovim configuration
 * hardlink-tmux.sh
-* hardlink-alacritty.sh
+* hardlink-kitty.sh
 * hardlink-starship.sh
+* hardlink-alacritty.sh -- Alacritty doesn't work with the Nerd Font patched FiraCode. Devicons on LuaLine will need to be disabled.
 
 ## Neovim Configuration with LSP configured - Neovim 0.5 (nightly)
 This configuration is setup to against a nightly build of neovim heading towards the 0.5 release.
@@ -27,13 +28,15 @@ Basic changes the main being the Tmux index starts at one instead of zero.
 ## Starship
 Simple look and feel configured.
 
+## Kitty - Configured to use Fira Code patched with NerdFonts
+The Arch aur package - __nerd-fonts-fira-code__ will provide a working font for Neovim and Kitty.
+This allows for the use of Ligatures and (https://github.com/ryanoasis/vim-devicons)
+
 ## Alacritty - Configured to use Fira Code (https://github.com/tonsky/FiraCode)
-Change the terminal font to use Fira Code.
+The terminal font is set to Fira Code. This does not work with the Devicons used in neovim (via LuaLine).
 
 ## TODO
 Add configurations for the following:
-* Neovim
-	* Change Signify symbols to be more meaningful.
-	* Update lightline so that lsp loading progress is displayed.
-* VSCodium - VSCodium setup plugins and neovim setup is yet to be done.
-* Kitty - Kitty has font ligatures that Alacritty does not. Need to setup a configuration for it.
+* VSCodium - VSCodium setup and plugins (still a work in progress).
+* Neovim - Consolidate configurations for plugins into a smaller number of files to make management of key bindings easier.
+	* LSPSaga - Shortcuts for LSPSaga are not fully integrated, there is some overlap with other bindings.
