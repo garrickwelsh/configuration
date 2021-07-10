@@ -24,15 +24,4 @@ nnoremap <leader>tse <cmd>Telescope lsp_dynamic_workspace_symbols<cr>
 nnoremap <leader>tdd <cmd>Telescope lsp_document_diagnostics<cr>
 nnoremap <leader>tdw <cmd>Telescope lsp_workspace_diagnostics<cr>
 
-" Git commands 
-nnoremap <leader>gc <cmd>Telescope git_commits<cr>
-nnoremap <leader>gh <cmd>Telescope git_bcommits<cr>
-nnoremap <leader>gb <cmd>Telescope git_branches<cr>
-nnoremap <leader>gs <cmd>Telescope git_status<cr>
-nnoremap <leader>gt <cmd>Telescope git_stash<cr>
-
-
-" As these command are context specific let's not map them explicitly to
-" Telescope
-"nnoremap <leader>tr <cmd>Telescope lsp_references<cr>
-"nnoremap <leader>tf <cmd>Telescope lsp_definitions<cr>
+" Telescope git mappings in git.vim

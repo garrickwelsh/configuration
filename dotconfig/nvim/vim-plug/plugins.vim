@@ -33,9 +33,11 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 		" Enable devicons
 		Plug 'ryanoasis/vim-devicons'
 
-		" gruvbox colour schemes
+		" colour schemes
 		Plug 'morhetz/gruvbox'
-		
+		Plug 'folke/tokyonight.nvim'	
+		Plug 'rafamadriz/neon'
+
 		if has('nvim-0.5')
 			" Collection of common configurations for the Nvim LSP client
 			Plug 'neovim/nvim-lspconfig'
@@ -59,6 +61,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 
 			" Tree-sitter
 			Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+			Plug 'nvim-treesitter/completion-treesitter'
 
 			" Lualine
 			Plug 'hoob3rt/lualine.nvim'
@@ -74,6 +77,10 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 			
 			" Rust tools for nvim lsp
 			Plug 'simrat39/rust-tools.nvim'
+
+
+			" Play stuff
+			Plug 'tjdevries/train.nvim'
 		endif
 	endif
 call plug#end()
