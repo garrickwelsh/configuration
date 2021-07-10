@@ -75,9 +75,10 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 			" Colourise errors
 			Plug 'folke/lsp-colors.nvim'
 
+			" Git plugins
 			Plug 'TimUntersberger/neogit'
 			Plug 'lewis6991/gitsigns.nvim'
-			Plug 'f-person/git-blame.nvim'
+			
 			" Rust tools for nvim lsp
 			Plug 'simrat39/rust-tools.nvim'
 		endif
