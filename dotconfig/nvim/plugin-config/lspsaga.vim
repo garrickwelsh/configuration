@@ -1,13 +1,27 @@
 
 lua <<EOF
-local saga = require('lspsaga')
-saga.init_lsp_saga {
-  error_sign = '',
-  warn_sign = '',
-  hint_sign = '',
-  infor_sign = '',
-  border_style = "round",
-}
+require("lspsaga").init_lsp_saga({
+  -- use_saga_diagnostic_sign = true
+  error_sign = "",
+  warn_sign = "",
+  hint_sign = "",
+  infor_sign = "",
+  -- dianostic_header_icon = '   ',
+  code_action_icon = "💡",
+  code_action_prompt = { enable = true, sign = true, sign_priority = 20, virtual_text = true },
+  finder_definition_icon = '  ',
+  finder_reference_icon = '  ',
+  -- max_preview_lines = 10, -- preview lines of lsp_finder and definition preview
+  finder_action_keys = {
+    open = "e",
+    vsplit = "v",
+    split = "s",
+    quit = "q",
+    scroll_down = "<C-f>",
+    scroll_up = "<C-b>", -- quit can be a table
+  },
+  code_action_keys = { quit = "<ESC>", exec = "<CR>" },
+})
 EOF
 
 noremap <silent> gh <cmd>lua require('lspsaga.provider').lsp_finder()<CR>
@@ -34,6 +48,3 @@ nnoremap <silent> ]e <cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_ne
 " float terminal also you can pass the cli command in open_float_terminal function
 nnoremap <silent><leader>st <cmd>lua require('lspsaga.floaterm').open_float_terminal()<CR>
 tnoremap <silent><C-W> <C-\><C-n>:lua require('lspsaga.floaterm').close_float_terminal()<CR>
-
-"autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost *
-"			\ <cmd>lua require('lspsaga.diagnostic').show_line_diagnostics()<CR>

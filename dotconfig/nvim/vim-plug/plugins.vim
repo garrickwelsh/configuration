@@ -14,13 +14,8 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 	" GUI enhancements
 	Plug 'machakann/vim-highlightedyank'
 
-
 	" Fuzzy finder
 	Plug 'airblade/vim-rooter'
-
-	" FZF Fuzzy finder
-	"Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-	"Plug 'junegunn/fzf.vim'
 
 	" Syntactic language support
 	Plug 'rust-lang/rust.vim'
@@ -52,31 +47,12 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 			" Collection of common configurations for the Nvim LSP client
 			Plug 'neovim/nvim-lspconfig'
 			Plug 'kabouzeid/nvim-lspinstall'
-			Plug 'hrsh7th/nvim-compe' "Autocompletion plugin for lsp
+			" Autocompletion framework for built-in LSP
+			Plug 'nvim-lua/completion-nvim'	" VIM enhancements
+			"Plug 'hrsh7th/nvim-compe' "Autocompletion plugin for lsp
 
 			" Extensions to built-in LSP, for example, providing type inlay hints
 			Plug 'nvim-lua/lsp_extensions.nvim'
-
-			" Autocompletion framework for built-in LSP
-			Plug 'nvim-lua/completion-nvim'	" VIM enhancements
-
-			" Lsp saga light-weight plugin for a performant UI.
-			Plug 'glepnir/lspsaga.nvim'
-
-			" Tree-sitter
-			Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-
-			" Lightline
-			"Plug 'itchyny/lightline.vim'
-			"Plug 'itchyny/vim-gitbranch'
-			"Plug 'josa42/nvim-lightline-lsp'
-			
-			" Lualine
-			Plug 'hoob3rt/lualine.nvim'
-			Plug 'arkav/lualine-lsp-progress'
-			
-			" Awesome rust tools for nvim lsp
-			Plug 'simrat39/rust-tools.nvim'
 
 			" Popup library
 			Plug 'nvim-lua/popup.nvim'
@@ -84,6 +60,29 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 			Plug 'nvim-lua/plenary.nvim'
 			" Fast finder 
 			Plug 'nvim-telescope/telescope.nvim'
+
+			" Lsp saga light-weight plugin for a performant UI.
+			Plug 'glepnir/lspsaga.nvim'
+
+			" Tree-sitter
+			Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
+			" Lualine
+			Plug 'hoob3rt/lualine.nvim'
+			"Plug 'arkav/lualine-lsp-progress'
+			Plug 'garrickwelsh/lualine-lsp-progress'
+
+			Plug 'folke/lsp-colors.nvim'
+			
+			" Rust tools for nvim lsp
+			Plug 'simrat39/rust-tools.nvim'
+
+	
+			" Lightline
+			"Plug 'itchyny/lightline.vim'
+			"Plug 'itchyny/vim-gitbranch'
+			"Plug 'josa42/nvim-lightline-lsp'
+			
 		endif
 	endif
 call plug#end()

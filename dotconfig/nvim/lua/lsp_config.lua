@@ -15,6 +15,9 @@ local function make_config()
   }
 end
 
+-- Configure rust-analyzer (I use an Arch package instead of LspInstall)
+require'lspconfig'.rust_analyzer.setup(make_config())
+
 require'lspinstall'.setup() -- important
 
 local servers = require'lspinstall'.installed_servers()
@@ -27,14 +30,15 @@ end
 -- Enable diagnostics
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {
+--  require('lsp_extensions.workspace.diagnostic').handler, {
     underline = true,
     virtual_text = {
       spacing = 4,
-      prefix = ''
+      prefix = "▶",
     },
-    signs = true,
     update_in_insert = true,
     severity_sort = true,
+    signs = true,
   }
 )
 
