@@ -31,11 +31,11 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 		Plug 'nathanaelkane/vim-indent-guides'
 
 		" Git Plugins
-		Plug 'mhinz/vim-signify'
+		"Plug 'mhinz/vim-signify'
 		" More Git Plugins
-		Plug 'tpope/vim-fugitive'
-		Plug 'tpope/vim-rhubarb'
-		Plug 'junegunn/gv.vim'
+		"Plug 'tpope/vim-fugitive'
+		"Plug 'tpope/vim-rhubarb'
+		"Plug 'junegunn/gv.vim'
 
 		" Enable devicons
 		Plug 'ryanoasis/vim-devicons'
@@ -72,17 +72,14 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 			"Plug 'arkav/lualine-lsp-progress'
 			Plug 'garrickwelsh/lualine-lsp-progress'
 
+			" Colourise errors
 			Plug 'folke/lsp-colors.nvim'
-			
+
+			Plug 'TimUntersberger/neogit'
+			Plug 'lewis6991/gitsigns.nvim'
+			Plug 'f-person/git-blame.nvim'
 			" Rust tools for nvim lsp
 			Plug 'simrat39/rust-tools.nvim'
-
-	
-			" Lightline
-			"Plug 'itchyny/lightline.vim'
-			"Plug 'itchyny/vim-gitbranch'
-			"Plug 'josa42/nvim-lightline-lsp'
-			
 		endif
 	endif
 call plug#end()

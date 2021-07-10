@@ -28,19 +28,19 @@ for _, server in pairs(servers) do
 end
 
 -- Enable diagnostics
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-  vim.lsp.diagnostic.on_publish_diagnostics, {
+--vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+----  vim.lsp.diagnostic.on_publish_diagnostics, {
 --  require('lsp_extensions.workspace.diagnostic').handler, {
-    underline = true,
-    virtual_text = {
-      spacing = 4,
-      prefix = "▶",
-    },
-    update_in_insert = true,
-    severity_sort = true,
-    signs = true,
-  }
-)
+--    underline = true,
+--    virtual_text = {
+--      spacing = 4,
+--      prefix = "▶",
+--    },
+--    update_in_insert = true,
+--    severity_sort = true,
+--    signs = true,
+--  }
+--)
 
 
 -- vim:et ts=2 sw=2
