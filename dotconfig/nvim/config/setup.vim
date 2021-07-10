@@ -26,6 +26,7 @@ set mouse=a
 set hlsearch
 set incsearch
 set smartcase " Case sensitive search when an upper case is included other wise ignore case
+set relativenumber " Set relative line numbers
 
 " Turn off folds by default
 set foldlevelstart=99 

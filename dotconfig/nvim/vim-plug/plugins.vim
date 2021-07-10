@@ -18,11 +18,8 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 	Plug 'airblade/vim-rooter'
 
 	" Syntactic language support
-	Plug 'rust-lang/rust.vim'
-	Plug 'cespare/vim-toml'
+	Plug 'sheerun/vim-polyglot'
 	Plug 'stephpy/vim-yaml'
-	Plug 'rhysd/vim-clang-format'
-	Plug 'plasticboy/vim-markdown'
 	
 	if !exists('g:vscode')
 
@@ -37,6 +34,8 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 		Plug 'morhetz/gruvbox'
 		Plug 'folke/tokyonight.nvim'	
 		Plug 'rafamadriz/neon'
+		Plug 'jsit/toast.vim'
+		Plug 'joshdick/onedark.vim'
 
 		if has('nvim-0.5')
 			" Collection of common configurations for the Nvim LSP client
