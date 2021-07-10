@@ -32,12 +32,8 @@ imap <s-tab> <Plug>(completion_smart_s_tab)
 " Show diagnostic popup on cursor hold
 autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics({focusable = false})
 
-" autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost,CursorHold,CursorHoldI * :lua require'lsp_extensions'.inlay_hints{ prefix = ' » ', highlight = "NonText", enabled = {"ChainingHint"} }
-
-" Enable type inlay hints
-"autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost *
-"			\ lua require'lsp_extensions'.inlay_hints{ prefix = '▶ ', highlight = "Comment" }
-
 " Enable compeletion for all buffers not just lsp
 autocmd BufEnter * lua require'completion'.on_attach()
 
+" Show inlay hints when things happen
+autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost * :lua require'lsp_extensions'.inlay_hints{ prefix = '=> ', parameter_hints_prefix = "<-", highlight = "Comment", enabled = {"TypeHint", "ChainingHint", "ParameterHint"} }

@@ -30,13 +30,6 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 		" Syntax mark indent alignment
 		Plug 'nathanaelkane/vim-indent-guides'
 
-		" Git Plugins
-		"Plug 'mhinz/vim-signify'
-		" More Git Plugins
-		"Plug 'tpope/vim-fugitive'
-		"Plug 'tpope/vim-rhubarb'
-		"Plug 'junegunn/gv.vim'
-
 		" Enable devicons
 		Plug 'ryanoasis/vim-devicons'
 
@@ -69,8 +62,8 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 
 			" Lualine
 			Plug 'hoob3rt/lualine.nvim'
-			"Plug 'arkav/lualine-lsp-progress'
-			Plug 'garrickwelsh/lualine-lsp-progress'
+			Plug 'arkav/lualine-lsp-progress'
+			"Plug 'garrickwelsh/lualine-lsp-progress'
 
 			" Colourise errors
 			Plug 'folke/lsp-colors.nvim'
