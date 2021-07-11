@@ -14,7 +14,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 	" GUI enhancements
 	Plug 'machakann/vim-highlightedyank'
 
-	" Fuzzy finder
+	" Find the git folder and make it the root for the editing.
 	Plug 'airblade/vim-rooter'
 
 	" Syntactic language support
