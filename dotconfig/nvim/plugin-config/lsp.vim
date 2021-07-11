@@ -96,4 +96,4 @@ autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics({focusable = f
 autocmd BufEnter * lua require'completion'.on_attach()
 
 " Show inlay hints when things happen
-autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost * :lua require'lsp_extensions'.inlay_hints{ prefix = '=> ', parameter_hints_prefix = "<-", highlight = "Comment", enabled = {"TypeHint", "ChainingHint", "ParameterHint"} }
+autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost *.rs :lua require'lsp_extensions'.inlay_hints{ prefix = '=> ', parameter_hints_prefix = "<-", highlight = "Comment", enabled = {"TypeHint", "ChainingHint", "ParameterHint"} }
