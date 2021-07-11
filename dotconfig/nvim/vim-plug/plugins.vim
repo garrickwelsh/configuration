@@ -31,19 +31,21 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 		Plug 'ryanoasis/vim-devicons'
 
 		" colour schemes
-		Plug 'morhetz/gruvbox'
 		Plug 'folke/tokyonight.nvim'	
 		Plug 'rafamadriz/neon'
 		Plug 'jsit/toast.vim'
 		Plug 'joshdick/onedark.vim'
+		Plug 'morhetz/gruvbox'
 
 		if has('nvim-0.5')
 			" Collection of common configurations for the Nvim LSP client
 			Plug 'neovim/nvim-lspconfig'
 			Plug 'kabouzeid/nvim-lspinstall'
+
 			" Autocompletion framework for built-in LSP
 			Plug 'nvim-lua/completion-nvim'	" VIM enhancements
-			"Plug 'hrsh7th/nvim-compe' "Autocompletion plugin for lsp
+			Plug 'hrsh7th/nvim-compe' "Autocompletion plugin for lsp
+			Plug 'ray-x/lsp_signature.nvim'
 
 			" Extensions to built-in LSP, for example, providing type inlay hints
 			Plug 'nvim-lua/lsp_extensions.nvim'
@@ -57,6 +59,9 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 
 			" Lsp saga light-weight plugin for a performant UI.
 			Plug 'glepnir/lspsaga.nvim'
+
+			" Terminal plugin (alternative to the one provided by lspsaga
+			Plug 'akinsho/nvim-toggleterm.lua'
 
 			" Tree-sitter
 			Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
@@ -77,9 +82,13 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 			" Rust tools for nvim lsp
 			Plug 'simrat39/rust-tools.nvim'
 
-
+			" Debuggers
+			Plug 'mfussenegger/nvim-dap'
+			Plug 'theHamsta/nvim-dap-virtual-text'
+			Plug 'rcarriga/nvim-dap-ui'
+			Plug 'nvim-telescope/telescope-dap.nvim'
 			" Play stuff
-			Plug 'tjdevries/train.nvim'
+			" Plug 'tjdevries/train.nvim'
 		endif
 	endif
 call plug#end()
