@@ -14,10 +14,10 @@ if !exists('g:vscode') " if using vscode don't use lsp telescope etc.
 	if has('nvim-0.5')
 		lua require('lsp_config')
 		lua require('lualine_config')
+		source $HOME/.config/nvim/plugin-config/lsp.vim
 		source $HOME/.config/nvim/plugin-config/git.vim
 		source $HOME/.config/nvim/plugin-config/telescope.vim
 		source $HOME/.config/nvim/plugin-config/treesitter.vim
-		source $HOME/.config/nvim/plugin-config/lsp.vim
 		source $HOME/.config/nvim/plugin-config/utilities.vim
 	endif
 endif

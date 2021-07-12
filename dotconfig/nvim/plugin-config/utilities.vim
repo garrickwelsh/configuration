@@ -5,6 +5,8 @@ require('todo-comments').setup()
 
 require('trouble').setup()
 
+local focus = require('focus')
+focus.enable = true
 EOF
 
 nnoremap <leader>td <CMD>TodoTelescope<CR>

@@ -4,6 +4,7 @@ local lspinstall = require('lspinstall')
 -- function to attach completion when setting up lsp
 local on_attach = function(client)
     require'completion'.on_attach(client)
+    require'lsp_signature'.on_attach(client)
 end
 
 -- config that activates keymaps and enables snippet support

@@ -38,6 +38,9 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 		Plug 'joshdick/onedark.vim'
 		Plug 'sainnhe/sonokai'
 		Plug 'sainnhe/edge'
+		Plug 'dracula/vim', { 'as': 'dracula' } 
+		Plug 'embark-theme/vim', { 'as': 'embark' }
+		Plug 'arcticicestudio/nord-vim'
 		Plug 'morhetz/gruvbox'
 
 		if has('nvim-0.5')
@@ -98,6 +101,8 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 			" Lua tree
 			Plug 'kyazdani42/nvim-tree.lua'
 
+			" Focus windows when moving between a split view
+			Plug 'beauwilliams/focus.nvim'
 
 			" Debuggers
 			Plug 'mfussenegger/nvim-dap'
