@@ -34,8 +34,8 @@ local config = {
   },
   sections = {
     lualine_a = {'mode'},
-    lualine_b = {'filename'},
-    lualine_c = {},
+    lualine_b = {},
+    lualine_c = { { 'filename', path = 1 } },
     lualine_x = {},
     lualine_y = {'encoding', 'fileformat', 'filetype'},
     lualine_z = {},
@@ -62,7 +62,7 @@ local config = {
 
 -- Inserts a component in lualine_c at left section
 local function ins_left(component)
-  table.insert(config.sections.lualine_c, component)
+  table.insert(config.sections.lualine_b, component)
 end
 -- Inserts a component in lualine_c at left section
 local function ins_left_tabline(component)
