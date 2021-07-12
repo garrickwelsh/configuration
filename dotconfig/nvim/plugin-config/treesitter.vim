@@ -4,8 +4,6 @@ require'nvim-treesitter.configs'.setup {
   highlight = {
     enable = true,
     custom_captures = {
-      -- Highlight the @foo.bar capture group with the "Identifier" highlight group.
-      ["foo.bar"] = "Identifier",
     },
   },
   incremental_selection = {
@@ -22,6 +20,11 @@ require'nvim-treesitter.configs'.setup {
   },
   
 }
+
+require'treesitter-context.config'.setup{
+    enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
+}
+
 EOF
 
 set foldmethod=expr
