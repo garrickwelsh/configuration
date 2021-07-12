@@ -81,7 +81,9 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 			" Tree-sitter
 			Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 			Plug 'nvim-treesitter/completion-treesitter'
-			Plug 'romgrk/nvim-treesitter-context'
+			if !(has("win64") || has("win32"))
+				Plug 'romgrk/nvim-treesitter-context'
+			endif
 
 			" Comment code
 			Plug 'b3nj5m1n/kommentary'

@@ -21,9 +21,11 @@ require'nvim-treesitter.configs'.setup {
   
 }
 
-require'treesitter-context.config'.setup{
-    enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
-}
+if (vim.fn.has("win64") or vim.fn.has("win32")) ~= 1 then
+	require'treesitter-context.config'.setup{
+		enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
+	}
+end
 
 EOF
 
