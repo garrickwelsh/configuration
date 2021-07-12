@@ -17,3 +17,5 @@ nnoremap <leader>trd <CMD>TroubleToggle lsp_document_diagnostics<CR>
 nnoremap <leader>trq <CMD>TroubleToggle quickfix<CR>
 nnoremap <leader>trl <CMD>TroubleToggle loclist<CR>
 nnoremap <leader>trr <CMD>TroubleToggle lsp_references<CR>
+
+nnoremap <leader>te <CMD>Telescope symbols<CR>

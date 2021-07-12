@@ -41,6 +41,8 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 		Plug 'dracula/vim', { 'as': 'dracula' } 
 		Plug 'embark-theme/vim', { 'as': 'embark' }
 		Plug 'arcticicestudio/nord-vim'
+		Plug 'shaunsingh/moonlight.nvim'
+		Plug 'sainnhe/gruvbox-material'
 		Plug 'morhetz/gruvbox'
 
 		if has('nvim-0.5')
@@ -70,7 +72,6 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 			Plug 'nvim-lua/plenary.nvim'
 			" Fast finder 
 			Plug 'nvim-telescope/telescope.nvim'
-
 			" Lsp saga light-weight plugin for a performant UI.
 			Plug 'glepnir/lspsaga.nvim'
 
@@ -82,6 +83,9 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 			Plug 'nvim-treesitter/completion-treesitter'
 			Plug 'romgrk/nvim-treesitter-context'
 
+			" Comment code
+			Plug 'b3nj5m1n/kommentary'
+
 			" Lualine
 			Plug 'hoob3rt/lualine.nvim'
 			Plug 'arkav/lualine-lsp-progress'
@@ -90,7 +94,12 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 			" Terminal plugin (alternative to the one provided by lspsaga
 			" Plug 'akinsho/nvim-toggleterm.lua'
 
+			" Icons
 			Plug 'kyazdani42/nvim-web-devicons'
+
+			" Telescope insert emoji
+			Plug 'nvim-telescope/telescope-symbols.nvim'
+
 			" Colourise errors
 			Plug 'folke/lsp-colors.nvim'
 

@@ -12,5 +12,5 @@ let g:neon_style="Dark"
 " let g:neon_style="Light"
 
 " The vim colour scheme
-autocmd vimenter * ++nested colorscheme gruvbox
+autocmd vimenter * ++nested colorscheme gruvbox-material
 
