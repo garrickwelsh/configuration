@@ -48,4 +48,7 @@ let g:completion_chain_complete_list = {
 			\'rust' : [
 			\	{'complete_items': ['lsp', 'ts']}
 			\	],
+			\'csharp' : [
+			\	{'complete_items': ['lsp', 'ts']}
+			\	],
 			\}

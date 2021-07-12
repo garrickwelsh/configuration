@@ -29,15 +29,25 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 
 		" Enable devicons
 		Plug 'ryanoasis/vim-devicons'
+		Plug 'kshenoy/vim-signature'
 
 		" colour schemes
 		Plug 'folke/tokyonight.nvim'	
 		Plug 'rafamadriz/neon'
 		Plug 'jsit/toast.vim'
 		Plug 'joshdick/onedark.vim'
+		Plug 'sainnhe/sonokai'
+		Plug 'sainnhe/edge'
 		Plug 'morhetz/gruvbox'
 
 		if has('nvim-0.5')
+			" Git plugins
+			"Plug 'TimUntersberger/neogit' " Neogit causes nvim to crash with
+			"too may files open error. No longer used until it is resolved.
+			Plug 'tpope/vim-fugitive'
+			Plug 'lewis6991/gitsigns.nvim'
+			Plug 'sindrets/diffview.nvim'
+
 			" Collection of common configurations for the Nvim LSP client
 			Plug 'neovim/nvim-lspconfig'
 			Plug 'kabouzeid/nvim-lspinstall'
@@ -49,6 +59,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 
 			" Extensions to built-in LSP, for example, providing type inlay hints
 			Plug 'nvim-lua/lsp_extensions.nvim'
+			Plug 'onsails/lspkind-nvim'
 
 			" Popup library
 			Plug 'nvim-lua/popup.nvim'
@@ -60,33 +71,40 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 			" Lsp saga light-weight plugin for a performant UI.
 			Plug 'glepnir/lspsaga.nvim'
 
-			" Terminal plugin (alternative to the one provided by lspsaga
-			Plug 'akinsho/nvim-toggleterm.lua'
+			" Rust tools for nvim lsp
+			Plug 'simrat39/rust-tools.nvim'
 
 			" Tree-sitter
 			Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 			Plug 'nvim-treesitter/completion-treesitter'
+			Plug 'romgrk/nvim-treesitter-context'
 
 			" Lualine
 			Plug 'hoob3rt/lualine.nvim'
 			Plug 'arkav/lualine-lsp-progress'
 			"Plug 'garrickwelsh/lualine-lsp-progress'
 
+			" Terminal plugin (alternative to the one provided by lspsaga
+			" Plug 'akinsho/nvim-toggleterm.lua'
+
+			Plug 'kyazdani42/nvim-web-devicons'
 			" Colourise errors
 			Plug 'folke/lsp-colors.nvim'
 
-			" Git plugins
-			Plug 'TimUntersberger/neogit'
-			Plug 'lewis6991/gitsigns.nvim'
-			
-			" Rust tools for nvim lsp
-			Plug 'simrat39/rust-tools.nvim'
+			" TODO List
+			Plug 'folke/todo-comments.nvim'
+			Plug 'folke/trouble.nvim'
+
+			" Lua tree
+			Plug 'kyazdani42/nvim-tree.lua'
+
 
 			" Debuggers
 			Plug 'mfussenegger/nvim-dap'
 			Plug 'theHamsta/nvim-dap-virtual-text'
 			Plug 'rcarriga/nvim-dap-ui'
 			Plug 'nvim-telescope/telescope-dap.nvim'
+
 			" Play stuff
 			" Plug 'tjdevries/train.nvim'
 		endif
