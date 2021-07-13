@@ -33,15 +33,10 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 
 		" colour schemes
 		Plug 'folke/tokyonight.nvim'	
-		Plug 'rafamadriz/neon'
-		Plug 'jsit/toast.vim'
 		Plug 'joshdick/onedark.vim'
 		Plug 'sainnhe/sonokai'
-		Plug 'sainnhe/edge'
 		Plug 'dracula/vim', { 'as': 'dracula' } 
-		Plug 'embark-theme/vim', { 'as': 'embark' }
 		Plug 'arcticicestudio/nord-vim'
-		Plug 'shaunsingh/moonlight.nvim'
 		Plug 'sainnhe/gruvbox-material'
 		Plug 'morhetz/gruvbox'
 
