@@ -9,8 +9,8 @@ nnoremap <leader>tc <cmd>Telescope colorscheme<cr>
 nnoremap <leader>tt <cmd>Telescope file_browser<cr>
 
 " Document symbols for lsp
-nnoremap gr <cmd>Telescope lsp_references<cr>
-nnoremap gd <cmd>Telescope lsp_definitions<cr>
+nnoremap <silent> gr <cmd>Telescope lsp_references<cr>
+nnoremap <silent> gd <cmd>Telescope lsp_definitions<cr>
 
 " Refactoring (LSP)
 nnoremap <silent> <leader>ra <cmd>Telescope lsp_code_actions<cr>
