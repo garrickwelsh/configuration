@@ -33,19 +33,25 @@ require("lspsaga").init_lsp_saga({
 })
 EOF
 
+" Enable trouble and todo.
+lua << EOF
+
+require('todo-comments').setup()
+
+require('trouble').setup()
+
+local focus = require('focus')
+focus.enable = true
+EOF
 
 """"""""""""""""""""" Code navigation shortcuts """"""""""""""""""""
 
-nnoremap <silent> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
 " nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR> " LspSaga now used.
 nnoremap <silent> gD    <cmd>lua vim.lsp.buf.implementation()<CR>
 nnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
 " See telescope.vim for mappings
-"nnoremap <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
+"nnoremap <silent> gd    <cmd>lua vim.lsp.buf.definition()<CR>
 nnoremap <silent> ga    <cmd>lua vim.lsp.buf.code_action()<CR>
-
-nnoremap <silent> <leader>rn <cmd>lua vim.lsp.buf.rename()<CR>')
-nnoremap <silent> <leader>rf <cmd>lua vim.lsp.buf.formatting()<CR>')
 
 " Goto previous/next diagnostic warning/error
 nnoremap <silent> g[ <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>
@@ -60,7 +66,8 @@ noremap <silent> gh <cmd>lua require('lspsaga.provider').lsp_finder()<CR>
 " code action
 nnoremap <silent><leader>ca <cmd>lua require('lspsaga.codeaction').code_action()<CR>
 vnoremap <silent><leader>ca :<C-U>lua require('lspsaga.codeaction').range_code_action()<CR>
-"
+nnoremap <silent><leader>cf <cmd>lua vim.lsp.buf.formatting()<CR>')
+
 " rename
 nnoremap <silent><leader>cr <cmd>lua require('lspsaga.rename').rename()<CR>
 
@@ -81,12 +88,24 @@ nnoremap <silent> ]e <cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_ne
 nnoremap <silent><leader>st <cmd>lua require('lspsaga.floaterm').open_float_terminal()<CR>
 tnoremap <silent><C-W> <C-\><C-n>:lua require('lspsaga.floaterm').close_float_terminal()<CR>
 
+" Rust tools.
 nnoremap <silent><nowait> <leader>rr :lua require('rust-tools.runnables').runnables({ use_telescope = true })<CR>
 nnoremap <silent><nowait> <leader>rem :lua require'rust-tools.expand_macro'.expand_macro()<CR>
 nnoremap <silent><nowait> <leader>ru :lua require'rust-tools.move_item'.move_item(true)<CR>
 nnoremap <silent><nowait> <leader>rd :lua require'rust-tools.move_item'.move_item(false)<CR>
 nnoremap <silent><nowait> <leader>rh :lua require'rust-tools.hover_actions'.hover_actions()<CR>
 
+" Trouble keybindings.
+nnoremap <leader>td <CMD>TodoTelescope<CR>
+nnoremap <leader>tn <CMD>NvimTreeToggle<CR>
+nnoremap <leader>trt <CMD>TroubleToggle<CR>
+nnoremap <leader>trw <CMD>TroubleToggle lsp_workspace_diagnostics<CR>
+nnoremap <leader>trd <CMD>TroubleToggle lsp_document_diagnostics<CR>
+nnoremap <leader>trq <CMD>TroubleToggle quickfix<CR>
+nnoremap <leader>trl <CMD>TroubleToggle loclist<CR>
+nnoremap <leader>trr <CMD>TroubleToggle lsp_references<CR>
+
+nnoremap <leader>te <CMD>Telescope symbols<CR>
 """"""""""""""""" Auto Cmds """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Show diagnostic popup on cursor hold

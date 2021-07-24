@@ -27,7 +27,7 @@ local conditions = {
 local config = {
   options = {
     icons_enabled = true,
-    theme = 'dracula',
+    theme = 'wombat',
     component_separators = {'', ''},
     section_separators = {'', ''},
     disabled_filetypes = {}
@@ -38,7 +38,7 @@ local config = {
     lualine_c = { { 'filename', path = 1 } },
     lualine_x = {},
     lualine_y = {'encoding', 'fileformat', 'filetype'},
-    lualine_z = {},
+    lualine_z = {{'branch'}, {'progress'}},
   },
   inactive_sections = {
     lualine_a = {},
@@ -50,11 +50,10 @@ local config = {
   },
   tabline = {
 	  lualine_a = {},
-	  lualine_b = {'branch'},
+	  lualine_b = {},
 	  lualine_c = {},
---	  lualine_c = { { 'filename', { path = 1 } } },
 	  lualine_x = {},
-	  lualine_y = {'progress'},
+	  lualine_y = {},
 	  lualine_z = {},
   },
   extensions = {}
@@ -115,7 +114,7 @@ ins_left {
   color_info = colors.cyan
 }
 
-ins_left_tabline {
+ins_right {
 	'diff',
 	symbols = {added = ' ', modified = ' ', removed = ' '},
 	color_added = colors.green,

@@ -18,7 +18,6 @@ if !exists('g:vscode') " if using vscode don't use lsp telescope etc.
 		source $HOME/.config/nvim/plugin-config/git.vim
 		source $HOME/.config/nvim/plugin-config/telescope.vim
 		source $HOME/.config/nvim/plugin-config/treesitter.vim
-		source $HOME/.config/nvim/plugin-config/utilities.vim
 	endif
 endif
 
