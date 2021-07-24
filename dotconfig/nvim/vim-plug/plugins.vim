@@ -88,9 +88,6 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 			Plug 'arkav/lualine-lsp-progress'
 			"Plug 'garrickwelsh/lualine-lsp-progress'
 
-			" Terminal plugin (alternative to the one provided by lspsaga
-			" Plug 'akinsho/nvim-toggleterm.lua'
-
 			" Icons
 			Plug 'kyazdani42/nvim-web-devicons'
 
@@ -100,7 +97,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 			" Colourise errors
 			Plug 'folke/lsp-colors.nvim'
 
-			" TODO List
+			" todo List
 			Plug 'folke/todo-comments.nvim'
 			Plug 'folke/trouble.nvim'
 
