@@ -50,7 +50,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 
 			" Collection of common configurations for the Nvim LSP client
 			Plug 'neovim/nvim-lspconfig'
-			Plug 'kabouzeid/nvim-lspinstall'
+			Plug 'williamboman/nvim-lsp-installer'
 
 			" Autocompletion framework for built-in LSP
 			Plug 'nvim-lua/completion-nvim'	" VIM enhancements

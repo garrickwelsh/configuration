@@ -1,5 +1,5 @@
 local lspconfig = require('lspconfig')
-local lspinstall = require('lspinstall')
+local lsp_installer = require('nvim-lsp-installer')
 
 -- function to attach completion when setting up lsp
 local on_attach = function(client)
@@ -20,14 +20,18 @@ end
 -- Configure rust-analyzer (I use an Arch package instead of LspInstall)
 lspconfig.rust_analyzer.setup(make_config())
 
-lspinstall.setup() -- important
+lsp_installer.settings({
+    ui = {
+        icons = {
+            server_installed = "✓",
+            server_pending = "➜",
+            server_uninstalled = "✗"
+        }
+    }
+})
+lsp_installer.on_server_ready(function(server) -- important
 
-local servers = lspinstall.installed_servers()
-for _, server in pairs(servers) do
-  local config = make_config()
-
-  lspconfig[server].setup(config)
-end
+end)
 
 require('rust-tools').setup()
 
