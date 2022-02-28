@@ -109,7 +109,7 @@ nnoremap <leader>te <CMD>Telescope symbols<CR>
 """"""""""""""""" Auto Cmds """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Show diagnostic popup on cursor hold
-autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics({focusable = false})
+autocmd CursorHold * lua vim.diagnostic.open_float()
 
 " Enable compeletion for all buffers not just lsp
 autocmd BufEnter * lua require'completion'.on_attach()
